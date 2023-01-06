@@ -32,7 +32,7 @@ class _ReplyPageState extends State<ReplyPage> {
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              ClipOval(child: Image.asset('assets/image/Flowerpot.jpg', fit: BoxFit.fill, width: 20, height: 20,)),
+                              ClipOval(child: Image.asset('assets/pizza.png', fit: BoxFit.fill, width: 20, height: 20,)),
                               SizedBox(width: 10,),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,

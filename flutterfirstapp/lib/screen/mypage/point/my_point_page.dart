@@ -53,7 +53,7 @@ class MyPointPage extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => PointInformationPage()),
                       );
                     },
-                    child: Text('초록도시포인트안내', style: TextStyle(fontSize: 11),),
+                    child: Text('포인트안내', style: TextStyle(fontSize: 11),),
                   ),
                 ),
               ],
