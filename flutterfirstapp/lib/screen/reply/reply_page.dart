@@ -115,8 +115,8 @@ class _ReplyPageState extends State<ReplyPage> {
                           primary: Colors.green,
                         ),
                         onPressed: (){
-                          showToatst('댓글등록 완료');
-                        }, child: Text('등록', style: TextStyle(fontSize: 20, color: Colors.white),))
+                          //showToatst('댓글등록 완료');
+                        }, child: Text('등록', style: TextStyle(fontSize: 17, color: Colors.white),))
                   ),
                 ),
               ],

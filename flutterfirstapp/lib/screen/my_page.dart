@@ -58,7 +58,7 @@ class _MyPageState extends State<MyPage> {
                                 width: 100,
                                 height: 100,
                                 child: Icon(
-                                  Icons.lock,
+                                  Icons.account_circle_sharp,
                                   size: 70,
                                 ),
                               ),
@@ -334,90 +334,14 @@ class _MyPageState extends State<MyPage> {
                         height: 3,
                       ),
                     ),
-                    ListTile(
-                      title: Text('문의내역'),
-                      trailing: Icon(Icons.navigate_next),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => InquiriesPage()),
-                        );
-                      },
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 10,
-                        bottom: 10,
-                      ),
-                      child: Container(
-                        color: Colors.grey[300],
-                        height: 3,
-                      ),
-                    ),
-                    ListTile(
-                      title: Text('나의 리뷰'),
-                      trailing: Icon(Icons.navigate_next),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MyReviewPage()),
-                        );
-                      },
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 10,
-                        bottom: 10,
-                      ),
-                      child: Container(
-                        color: Colors.grey[300],
-                        height: 3,
-                      ),
-                    ),
-                    ListTile(
-                      title: Text('고객센터'),
-                      trailing: Icon(Icons.navigate_next),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ServiceCenterPage()),
-                        );
-                      },
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 10,
-                        bottom: 10,
-                      ),
-                      child: Container(
-                        color: Colors.grey[300],
-                        height: 3,
-                      ),
-                    ),
-                    ListTile(
-                      title: Text('설정'),
-                      trailing: Icon(Icons.navigate_next),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SettingPage()),
-                        );
-                      },
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 10,
-                        bottom: 10,
-                      ),
-                      child: Container(
-                        color: Colors.grey[300],
-                        height: 3,
-                      ),
-                    ),
+                    listTileForm('문의내역',
+                          (){Navigator.push(context, MaterialPageRoute(builder: (context) => InquiriesPage()));},),
+                    listTileForm('나의 리뷰',
+                          (){Navigator.push(context, MaterialPageRoute(builder: (context) => MyReviewPage()));},),
+                    listTileForm('고객센터',
+                          (){Navigator.push(context, MaterialPageRoute(builder: (context) => ServiceCenterPage()));},),
+                    listTileForm('설정',
+                          (){Navigator.push(context, MaterialPageRoute(builder: (context) => SettingPage()));},),
                   ],
                 ),
               ],
@@ -427,4 +351,26 @@ class _MyPageState extends State<MyPage> {
       ],
     );
   }
+}
+
+Widget listTileForm(String ltText, VoidCallback callback){
+  return Column(
+    children: [
+      ListTile(
+        title: Text(ltText),
+        trailing: Icon(Icons.navigate_next),
+        onTap: callback,
+      ),
+      Padding(
+        padding: const EdgeInsets.only(
+          top: 10,
+          bottom: 10,
+        ),
+        child: Container(
+          color: Colors.grey[300],
+          height: 3,
+        ),
+      ),
+    ],
+  );
 }

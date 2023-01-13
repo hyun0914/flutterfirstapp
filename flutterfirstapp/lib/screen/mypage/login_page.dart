@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutterfirstapp/screen/mypage/signup_page.dart';
@@ -37,24 +35,26 @@ class _LoginPageState extends State<LoginPage> {
             physics: BouncingScrollPhysics(),
             child: Column(
               children: [
+                SizedBox(height: 9,),
+                Image.asset('assets/hen.png', width: 150, height: 200,),
                 Container(
-                  padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                  padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
                   child: TextField(
                     controller: _idcontroller,
                     onChanged: (email) {},
                     keyboardType: TextInputType.emailAddress,
                     decoration:
-                        InputDecoration(labelText: '이메일', helperText: ''),
+                        InputDecoration(labelText: '이메일', helperText: '', border: OutlineInputBorder()),
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                  padding: EdgeInsets.fromLTRB(20, 0, 20, 5),
                   child: TextField(
                     controller: _pwcontroller,
                     onChanged: (password) {},
                     obscureText: true,
                     decoration:
-                        InputDecoration(labelText: '비밀번호', helperText: ''),
+                        InputDecoration(labelText: '비밀번호', helperText: '', border: OutlineInputBorder()),
                   ),
                 ),
                 Container(
