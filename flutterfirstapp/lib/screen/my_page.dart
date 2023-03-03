@@ -207,121 +207,49 @@ class _MyPageState extends State<MyPage> {
                     Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(
-                            left: 15,
-                          ),
-                          child: Text(
-                            '나의 쇼핑',
-                            style: TextStyle(
-                              fontSize: 20,
-                            ),
-                          ),
+                          padding: const EdgeInsets.only(left: 15, bottom: 10),
+                          child: Text('나의 쇼핑', style: TextStyle(fontSize: 20,)),
                         ),
                       ],
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(
-                        top: 15,
-                        bottom: 15,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Expanded(
-                            flex: 1,
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          OrderDeliveryLookupPage()),
-                                );
-                              },
-                              style: ButtonStyle(
-                                foregroundColor:
-                                    MaterialStateProperty.resolveWith(
-                                        (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.pressed)) {
-                                    return Colors.grey;
-                                  }
-                                  return Colors.black;
-                                }),
-                              ),
-                              child: Column(
-                                children: [
-                                  Text('0'),
-                                  SizedBox(
-                                    height: 11,
-                                  ),
-                                  Text('주문배송조회'),
-                                ],
-                              ),
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade200,
+                          borderRadius: BorderRadius.circular(8)
+                        ),
+                        padding: const EdgeInsets.only(top: 15, bottom: 15,),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            myShopping(
+                              context,
+                              () => Navigator.push(context, MaterialPageRoute(builder: (_) => OrderDeliveryLookupPage())),
+                              '주문배송조회'
                             ),
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => MyCouponPage()),
-                                );
-                              },
-                              style: ButtonStyle(
-                                foregroundColor:
-                                    MaterialStateProperty.resolveWith(
-                                        (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.pressed)) {
-                                    return Colors.grey;
-                                  }
-                                  return Colors.black;
-                                }),
-                              ),
-                              child: Column(
-                                children: [
-                                  Text('0'),
-                                  SizedBox(
-                                    height: 11,
-                                  ),
-                                  Text('내쿠폰'),
-                                ],
-                              ),
+                            Container(
+                              color: Colors.grey.shade300,
+                              width: 2,
+                              height: 20,
                             ),
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => MyPointPage()),
-                                );
-                              },
-                              style: ButtonStyle(
-                                foregroundColor:
-                                    MaterialStateProperty.resolveWith(
-                                        (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.pressed)) {
-                                    return Colors.grey;
-                                  }
-                                  return Colors.black;
-                                }),
-                              ),
-                              child: Column(
-                                children: [
-                                  Text('0'),
-                                  SizedBox(
-                                    height: 11,
-                                  ),
-                                  Text('포인트'),
-                                ],
-                              ),
+                            myShopping(
+                              context,
+                              () => Navigator.push(context, MaterialPageRoute(builder: (_) => MyCouponPage())),
+                              '내쿠폰'
                             ),
-                          ),
-                        ],
+                            Container(
+                              color: Colors.grey.shade300,
+                              width: 2,
+                              height: 20,
+                            ),
+                            myShopping(
+                              context,
+                              () => Navigator.push(context, MaterialPageRoute(builder: (_) => MyPointPage())),
+                              '포인트'
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     Padding(
@@ -351,6 +279,32 @@ class _MyPageState extends State<MyPage> {
       ],
     );
   }
+}
+
+Widget myShopping(BuildContext context, VoidCallback onPressed, String text) {
+  return Expanded(
+    flex: 1,
+    child: TextButton(
+      onPressed: onPressed,
+      style: ButtonStyle(
+        foregroundColor:
+        MaterialStateProperty.resolveWith(
+                (Set<MaterialState> states) {
+              if (states.contains(MaterialState.pressed)) {
+                return Colors.grey;
+              }
+              return Colors.black;
+            }),
+      ),
+      child: Column(
+        children: [
+          Text('0'),
+          SizedBox(height: 11,),
+          Text(text),
+        ],
+      ),
+    ),
+  );
 }
 
 Widget listTileForm(String ltText, VoidCallback callback){
