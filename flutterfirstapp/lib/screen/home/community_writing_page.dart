@@ -7,7 +7,6 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../main_page.dart';
 import '../layout/simple_bar_layout.dart';
-import '../mypage/login_page.dart';
 
 
 class CommunityWritingPage extends StatefulWidget {

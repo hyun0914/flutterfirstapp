@@ -254,7 +254,7 @@ class _MyPageState extends State<MyPage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
-                        top: 10,
+                        top: 14,
                         bottom: 10,
                       ),
                       child: Container(

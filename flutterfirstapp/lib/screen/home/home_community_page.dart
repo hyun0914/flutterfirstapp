@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -26,14 +25,10 @@ class MyCustomScrollBehavior extends MaterialScrollBehavior {
   };
 }
 
+int childCount = 10;
+
 class _HomeCommunityPageState extends State<HomeCommunityPage> {
   bool click = false;
-
-  @override
-  void setState(VoidCallback fn) {
-    print('home setState');
-    super.setState(fn);
-  }
 
   @override
   void dispose() {
@@ -43,8 +38,6 @@ class _HomeCommunityPageState extends State<HomeCommunityPage> {
 
   @override
   Widget build(BuildContext context) {
-    int childCount = 10;
-
     return Column(
       children: [
         Expanded(
@@ -128,7 +121,7 @@ class _HomeCommunityPageState extends State<HomeCommunityPage> {
                                   child: Column(
                                     children: [
                                       Text(
-                                        '글제목',
+                                        '글제목 $index',
                                         style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold,),
                                       ),
                                       Row(
@@ -164,6 +157,9 @@ class _HomeCommunityPageState extends State<HomeCommunityPage> {
                         padding: const EdgeInsets.only(top: 25, bottom: 25),
                         child: InkWell(
                           onTap: () {
+                            setState(() {
+                              childCount = childCount +8;
+                            });
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -172,9 +168,7 @@ class _HomeCommunityPageState extends State<HomeCommunityPage> {
                             ),
                             padding: EdgeInsets.all(15),
                             child: const Center(
-                              child: Text(
-                                  '더보기'
-                              ),
+                              child: Text('더보기'),
                             ),
                           ),
                         ),

@@ -78,11 +78,6 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   }
 
   @override
-  void setState(VoidCallback fn) {
-    super.setState(fn);
-  }
-
-  @override
   Widget build(BuildContext context) {
     var controller = PrimaryScrollController.of(context);
     return Scaffold(
