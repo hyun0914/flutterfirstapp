@@ -162,7 +162,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
           setState(() {
             if(current_index == 0 || current_index == 1 || current_index == 4){
               //스크롤 젤위로 위치시키기
-              controller?.jumpTo(0);
+              controller.jumpTo(0);
             }
             current_index = value;
           });

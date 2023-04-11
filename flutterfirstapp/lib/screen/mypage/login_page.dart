@@ -12,6 +12,8 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
+bool obscureText = true;
+
 class _LoginPageState extends State<LoginPage> {
   final _idcontroller = TextEditingController();
   final _pwcontroller = TextEditingController();
@@ -43,8 +45,7 @@ class _LoginPageState extends State<LoginPage> {
                     controller: _idcontroller,
                     onChanged: (email) {},
                     keyboardType: TextInputType.emailAddress,
-                    decoration:
-                        InputDecoration(labelText: '이메일', helperText: '', border: OutlineInputBorder()),
+                    decoration: InputDecoration(labelText: '이메일', helperText: '', border: OutlineInputBorder()),
                   ),
                 ),
                 Container(
@@ -52,9 +53,22 @@ class _LoginPageState extends State<LoginPage> {
                   child: TextField(
                     controller: _pwcontroller,
                     onChanged: (password) {},
-                    obscureText: true,
-                    decoration:
-                        InputDecoration(labelText: '비밀번호', helperText: '', border: OutlineInputBorder()),
+                    obscureText: obscureText,
+                    decoration: InputDecoration(
+                      labelText: '비밀번호', helperText: '', border: OutlineInputBorder(),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            if(obscureText) {
+                              obscureText = false;
+                            } else {
+                              obscureText = true;
+                            }
+                          });
+                        },
+                        icon: obscureText == true? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
+                      )
+                    ),
                   ),
                 ),
                 Container(
@@ -65,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
-                        primary: Colors.green),
+                    backgroundColor: Colors.green),
                     onPressed: () {
                     },
                     child: Text('로그인'),
