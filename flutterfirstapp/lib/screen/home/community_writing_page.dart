@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/cli_commands.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -117,7 +118,7 @@ class _CommunityWritingPageState extends State<CommunityWritingPage> {
   }
 
   Widget imgFrom(){
-    List<Widget> _boxContents = [
+    List<Widget> boxContents = [
       IconButton(
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
@@ -128,7 +129,7 @@ class _CommunityWritingPageState extends State<CommunityWritingPage> {
             alignment: Alignment.center,
             decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.6), shape: BoxShape.circle),
-            child: Icon(
+            child: const Icon(
               CupertinoIcons.camera,
               color: Colors.green,
             ),
@@ -140,30 +141,32 @@ class _CommunityWritingPageState extends State<CommunityWritingPage> {
           ? Container()
           : FittedBox(
         child: Container(
-          padding: EdgeInsets.all(6),
+          padding: const EdgeInsets.all(6),
           decoration: BoxDecoration(
               color: Colors.white.withOpacity(0.6),
               shape: BoxShape.circle),
           child: Text('+${(_imageFile2.length -4).toString()}',
-            style: Theme.of(context).textTheme.subtitle2?.copyWith(fontWeight: FontWeight.w800),
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w800),
           ),
         ),
-      )
+      ),
     ];
 
     return SizedBox(
       height: 350,
       child: GridView.count(
-        physics: BouncingScrollPhysics(),
-        padding: EdgeInsets.all(2),
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.all(2),
         crossAxisCount: 4,
         mainAxisSpacing: 5,
         crossAxisSpacing: 5,
-        children: List.generate(
-          4,
+        children: List.generate(4,
               (index) => DottedBorder(
+                color: Colors.green,
+                dashPattern: const [5,3],
+                borderType: BorderType.RRect,
+                radius: const Radius.circular(10),
                 child: Container(
-                  child: Center(child: _boxContents[index]),
                   decoration: index <= _imageFile2.length-1
                   ? BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
@@ -171,11 +174,23 @@ class _CommunityWritingPageState extends State<CommunityWritingPage> {
                       fit: BoxFit.cover,
                       image: FileImage(File(_imageFile2[index].path))))
                   : null,
+                  child: Center(
+                    child: _imageFile2.length-1 == index?
+                    Stack(
+                      children: [
+                        boxContents[index],
+                        Positioned(child: InkWell(
+                          onTap: (){
+                            setState(() {
+                              _imageFile2.removeAt(_imageFile2.length-1);
+                            });
+                          },
+                          child: const Icon(Icons.close, color: Colors.green,)))
+                      ]
+                    )
+                    :boxContents[index],
+                  ),
                  ),
-                color: Colors.green,
-                dashPattern: [5,3],
-                borderType: BorderType.RRect,
-                radius: Radius.circular(10),
               ),
             ),
           ),
