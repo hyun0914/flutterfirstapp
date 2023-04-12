@@ -66,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                             }
                           });
                         },
-                        icon: obscureText == true? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
+                        icon: obscureText == true? const Icon(Icons.visibility_off) : const Icon(Icons.visibility),
                       )
                     ),
                   ),

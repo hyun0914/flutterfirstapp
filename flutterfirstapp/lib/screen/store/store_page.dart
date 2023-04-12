@@ -40,13 +40,14 @@ class _StorePageState extends State<StorePage> {
                         height: 2,
                       ),
                       // 배너광고
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8),
-                        child: Container(
+                      const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 8),
+                        child: SizedBox(
                           height: 200,
                           child: BannerPage(imgList: [
                             'assets/sale.png',
                             'assets/screen.png',
+                            'assets/email_img.png'
                           ],),
                         ),
                       ),

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'banner_details_page.dart';
 
@@ -45,33 +46,44 @@ class _BannerPageState extends State<BannerPage> {
     if(timer != null){
       timer!.cancel();
     }
-    // TODO: implement dispose
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
-        width: 720,
-        child: PageView.builder(
-          itemCount: widget.imgList.length,
-          controller: controller,
-          itemBuilder: (_, int index) {
-            return InkWell(
-              onTap: (){
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => BannerDetailsPage(imgName: widget.imgList[index])));
-              },
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10.0),
-                child: Image.asset(
-                      widget.imgList[index],
-                      fit: BoxFit.fill,
+      body: Column(
+        children: [
+          Expanded(
+            child: SizedBox(
+              width: 720,
+              child: PageView.builder(
+                itemCount: widget.imgList.length,
+                controller: controller,
+                itemBuilder: (_, int index) {
+                  return InkWell(
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => BannerDetailsPage(imgName: widget.imgList[index]))),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: Image.asset(
+                            widget.imgList[index],
+                            fit: BoxFit.fill,
+                          ),
                     ),
+                  );
+                },
               ),
-            );
-          },
-        ),
+            ),
+          ),
+          const SizedBox(height: 8,),
+          SmoothPageIndicator(
+            onDotClicked: (index){ controller.jumpToPage(index); },
+            controller: controller,  // PageController
+            count:  widget.imgList.length,
+            textDirection: TextDirection.ltr,
+            effect: const ExpandingDotsEffect(),
+          ),
+        ],
       ),
     );
   }
