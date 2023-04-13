@@ -75,13 +75,18 @@ class _BannerPageState extends State<BannerPage> {
               ),
             ),
           ),
-          const SizedBox(height: 8,),
+          const SizedBox(height: 12,),
           SmoothPageIndicator(
             onDotClicked: (index){ controller.jumpToPage(index); },
             controller: controller,  // PageController
             count:  widget.imgList.length,
             textDirection: TextDirection.ltr,
-            effect: const ExpandingDotsEffect(),
+            effect: const ExpandingDotsEffect(
+              dotWidth: 10,
+              dotHeight: 8,
+              dotColor: Colors.grey,
+              activeDotColor: Colors.green
+            ),
           ),
         ],
       ),

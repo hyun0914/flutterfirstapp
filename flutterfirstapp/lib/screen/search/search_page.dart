@@ -22,19 +22,22 @@ class _SearchPageState extends State<SearchPage> {
       title: '검색창',
       topIcon: null,
       children: [
-          TextFormField(
-            controller: _contentcontroller,
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.search),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
+          SizedBox(
+            height: 50,
+            child: TextFormField(
+              controller: _contentcontroller,
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                hintText: '검색어를 입력해주세요',
               ),
-              hintText: '검색어를 입력해주세요',
+              onFieldSubmitted: (_){
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchNextPage(get_test: _contentcontroller.text,)));
+                print('Testgo');
+              },
             ),
-            onFieldSubmitted: (_){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchNextPage(get_test: _contentcontroller.text,)));
-              print('Testgo');
-            },
           ),
           SizedBox(height: 5,),
           Padding(
