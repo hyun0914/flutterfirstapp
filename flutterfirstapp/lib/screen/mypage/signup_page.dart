@@ -142,25 +142,25 @@ class _SignUpPageState extends State<SignUpPage> {
                       key: _forkkey,
                       child: Column(
                         children: [
-                          TextFormField(
-                            controller: _idcontroller,
-                            keyboardType: TextInputType.emailAddress,
-                            validator: (value){
-                              Pattern pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-                              RegExp reqExp = new RegExp(pattern.toString());
-                              if(!reqExp.hasMatch(value!)){
-                                return '이메일 형식으로 작성해주세요';
-                              }else{
-                                checkId = true;
-                                return null;
-                              }
-                            },
-                            onSaved: (value){
-                              userEmail = value!;
-                            },
-                            decoration:
-                                InputDecoration(labelText: '이메일', helperText: ''),
+                          textField(
+                              controller: _idcontroller,
+                              keyboardType: TextInputType.emailAddress,
+                              validator: (String? value) {
+                                Pattern pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                                RegExp reqExp = new RegExp(pattern.toString());
+                                if(!reqExp.hasMatch(value!)){
+                                  return '이메일 형식으로 작성해주세요';
+                                }else{
+                                  checkId = true;
+                                  return null;
+                                }
+                              },
+                              onSaved: (String? newValue) {  userEmail = newValue!; },
+                            labelText: '이메일',
+                            obscureText: null,
+                            inputFormatters: [],
                           ),
+                          SizedBox(height: 8,),
                           Container(
                             width: MediaQuery.of(context).size.width * 0.85,
                             height: MediaQuery.of(context).size.height * 0.05,
@@ -191,11 +191,11 @@ class _SignUpPageState extends State<SignUpPage> {
                               child: Text('이메일 인증하기'),
                             ),
                           ),
-                          TextFormField(
+                          SizedBox(height: 8,),
+                          textField(
                             controller: _pwcontroller,
-                            onChanged: (password) {},
-                            obscureText: true,
-                            validator: (value){
+                            keyboardType: null,
+                            validator: (String? value) {
                               // Pattern pattern = r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?~^<>,.&+=])[A-Za-z\d$@$!%*#?~^<>,.&+=]{8}$';
                               // RegExp reqExp = new RegExp(pattern.toString());
                               if(value.toString().length<8){
@@ -205,34 +205,40 @@ class _SignUpPageState extends State<SignUpPage> {
                               }
                               return null;
                             },
-                            decoration:
-                            InputDecoration(labelText: '비밀번호', helperText: ''),
+                            onSaved: null,
+                            labelText: '비밀번호',
+                            obscureText: true, inputFormatters: [],
                           ),
+                          SizedBox(height: 8,),
                           TextField(
                             controller: _pwcontrollerCheked,
                             onChanged: (password) {},
                             obscureText: true,
-                            decoration:
-                            InputDecoration(labelText: '비밀번호 확인', helperText: ''),
+                            decoration: const InputDecoration(
+                              labelText: '비밀번호 확인',
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(width: 1, color: Colors.green)
+                              ),
+                            ),
                           ),
-                          TextFormField(
+                          SizedBox(height: 8,),
+                          textField(
                             controller: _namecontroller,
-                            onChanged: (value) {
-
-                            },
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.allow(RegExp(r'[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|ᆞ|ᆢ|ㆍ|ᆢ|ᄀᆞ|ᄂᆞ|ᄃᆞ|ᄅᆞ|ᄆᆞ|ᄇᆞ|ᄉᆞ|ᄋᆞ|ᄌᆞ|ᄎᆞ|ᄏᆞ|ᄐᆞ|ᄑᆞ|ᄒᆞ]')),
-                            ],
-                            validator: (value){
+                            keyboardType: null,
+                            validator: (String? value) {
                               if(value.toString().length >1){
                               }else{
                                 return '2자 이상으로 작성해주세요';
                               }
+                              return null;
                             },
-                            decoration:
-                            InputDecoration(labelText: '별명(중복불가,한글만 사용가능)', helperText: ''),
+                            onSaved: null,
+                            labelText: '별명(중복불가,한글만 사용가능)',
+                            obscureText: true,
+                            inputFormatters: [ FilteringTextInputFormatter.allow(RegExp(r'[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|ᆞ|ᆢ|ㆍ|ᆢ|ᄀᆞ|ᄂᆞ|ᄃᆞ|ᄅᆞ|ᄆᆞ|ᄇᆞ|ᄉᆞ|ᄋᆞ|ᄌᆞ|ᄎᆞ|ᄏᆞ|ᄐᆞ|ᄑᆞ|ᄒᆞ]')), ],
                           ),
-                      Container(
+                          SizedBox(height: 8,),
+                          Container(
                         width: MediaQuery.of(context).size.width * 0.85,
                         height: MediaQuery.of(context).size.height * 0.05,
                         child: ElevatedButton(
@@ -277,10 +283,6 @@ class _SignUpPageState extends State<SignUpPage> {
                                if(checkId == false || checkPa == false){
                                  _tryValidation();
                                } else if(checkId == true && checkPa == true){
-                                 // memberViewModel.onEvent(MemberEvent.member_insert(
-                                 //     _idcontroller.text,
-                                 //     _pwcontroller.text,
-                                 //     _namecontroller.text));
                                  print(_idcontroller.text +
                                      '      ' +
                                      _pwcontroller.text +
@@ -316,6 +318,31 @@ class _SignUpPageState extends State<SignUpPage> {
       ],
     );
   }
+}
+
+Widget textField({
+    required TextEditingController? controller,
+    required TextInputType? keyboardType,
+    required FormFieldValidator<String>? validator,
+    required FormFieldSetter<String>? onSaved,
+    required String? labelText,
+    required bool? obscureText,
+    required List<TextInputFormatter>? inputFormatters,
+    }) {
+  return TextFormField(
+    controller: controller,
+    keyboardType: keyboardType,
+    validator: validator,
+    onSaved: onSaved,
+    decoration: InputDecoration(
+      labelText: labelText,
+      enabledBorder: const OutlineInputBorder(
+        borderSide: BorderSide(width: 1, color: Colors.green)
+      ),
+    ),
+    obscureText: obscureText ?? false,
+    inputFormatters: inputFormatters,
+  );
 }
 
 class CheckboxView extends StatefulWidget {
