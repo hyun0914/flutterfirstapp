@@ -25,7 +25,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
 
   Future<bool> onBackTwo() {
     DateTime now = DateTime.now();
-    if(backPressTime == null || now.difference(backPressTime!) > Duration(seconds: 2)){
+    if(backPressTime == null || now.difference(backPressTime!) > const Duration(seconds: 2)){
       backPressTime = now;
       showToatst('뒤로가기 버튼을 한번 더 누르시면 종료 됩니다.');
       return Future.value(false);
@@ -33,7 +33,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     return Future.value(true);
   }
 
-  int current_index = 0;
+  int currentIndex = 0;
   final List<Widget> screenList = <Widget>[
     HomeCommunityPage(),
     StorePage(),
@@ -42,7 +42,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     // ARPage(),
   ];
 
-  void showToatst(String messsage) {
+  void showToastBox(String messsage) {
     Fluttertoast.showToast(
         msg: messsage,
         backgroundColor: Colors.black,
@@ -69,8 +69,6 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     }
   }
 
-  String get_id = '';
-
   @override
   void initState() {
     chekConnectivity();
@@ -86,28 +84,32 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         elevation: 0.0,
         backgroundColor: Colors.white,
         actions: [
-          Row(
-            children: [
-              Image.asset('assets/hamburger.png', fit: BoxFit.fill, width: 30, height: 30,),
-              SizedBox(width: 10,),
-              InkWell(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SearchPage())),
-                child: Container(
-                  width: 300,
-                  decoration: BoxDecoration(color: Colors.grey[200], borderRadius: BorderRadius.circular(5)),
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Row(
-                    children: [
-                      SizedBox(width: 8,),
-                      Icon(Icons.search, color: Colors.black,),
-                      SizedBox(width: 8,),
-                      Text('통합검색', style: TextStyle(color: Colors.black,),),
-                    ],
+          const SizedBox(width: 14,),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.asset('assets/hamburger.png', fit: BoxFit.fill, width: 30, height: 30,),
+                const SizedBox(width: 10,),
+                InkWell(
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SearchPage())),
+                  child: Container(
+                    width: 300,
+                    decoration: BoxDecoration(color: Colors.grey[200], borderRadius: BorderRadius.circular(5)),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: const Row(
+                      children: [
+                        SizedBox(width: 8,),
+                        Icon(Icons.search, color: Colors.black,),
+                        SizedBox(width: 8,),
+                        Text('통합검색', style: TextStyle(color: Colors.black,),),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(width: 15,),
-            ],
+                const SizedBox(width: 14,),
+              ],
+            ),
           ),
         ],
       ),
@@ -116,40 +118,40 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
           width: 720,
           margin: EdgeInsets.only(bottom: kToolbarHeight),
           child: WillPopScope(
-            child: screenList.elementAt(current_index),
+            child: screenList.elementAt(currentIndex),
             onWillPop: onBackTwo,
           ),
         ),
       ),
 
-      floatingActionButton:  current_index == 0 ? FloatingActionButton(
+      floatingActionButton:  currentIndex == 0 ? FloatingActionButton(
         elevation: 0.0,
         backgroundColor: Colors.green,
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (context) => CommunityWritingPage()));
         },
-        child: Icon(Icons.add_circle_outline, size: 40,)
+        child: const Icon(Icons.add_circle_outline, size: 40,)
       )
-      : SizedBox(),
+      : const SizedBox(),
 
       // 하단 네비게이션바
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: current_index,
+        currentIndex: currentIndex,
         elevation: 0.0,
         items: [
           BottomNavigationBarItem(
-              icon: (current_index==0)? Icon(Icons.home) : Icon(Icons.home_outlined),
+              icon: (currentIndex==0)? const Icon(Icons.home) : const Icon(Icons.home_outlined),
               label: '커뮤니티'),
 
           BottomNavigationBarItem(
-              icon: (current_index==1)? Icon(Icons.storefront_rounded, size: 22,) : Icon(Icons.storefront, size: 22),
+              icon: (currentIndex==1)? const Icon(Icons.storefront_rounded, size: 22,) : const Icon(Icons.storefront, size: 22),
               label: '스토어'),
 
           BottomNavigationBarItem(
-              icon: (current_index==2)?  Icon(Icons.shopping_cart) : Icon(Icons.shopping_cart_outlined),
+              icon: (currentIndex==2)?  const Icon(Icons.shopping_cart) : const Icon(Icons.shopping_cart_outlined),
               label: '장바구니' ),
           BottomNavigationBarItem(
-              icon: (current_index==3)? Icon(Icons.person) : Icon(Icons.perm_identity),
+              icon: (currentIndex==3)? const Icon(Icons.person) : const Icon(Icons.perm_identity),
               label: '마이'),
         ],
         selectedItemColor: Colors.green,
@@ -160,11 +162,11 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         onTap: (value){
           searchFocus.unfocus();
           setState(() {
-            if(current_index == 0 || current_index == 1 || current_index == 4){
+            if(currentIndex == 0 || currentIndex == 1 || currentIndex == 4){
               //스크롤 젤위로 위치시키기
-              controller.jumpTo(0);
+              controller!.jumpTo(0);
             }
-            current_index = value;
+            currentIndex = value;
           });
         },
       ),

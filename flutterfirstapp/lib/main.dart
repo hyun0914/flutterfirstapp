@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'main_page.dart';
 
 void main() {
-  Future.delayed(Duration(milliseconds: 150));
+  Future.delayed(const Duration(milliseconds: 140));
   runApp(
-    MaterialApp(
+    const MaterialApp(
       home: MainPage(),
     ),
   );
