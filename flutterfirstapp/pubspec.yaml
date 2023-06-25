@@ -36,7 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   url_launcher: ^6.1.5
   image_picker: ^0.8.5+3
-  flutter_native_splash: ^2.2.6
+  flutter_native_splash: ^2.2.19
   fluttertoast: ^8.0.9
   connectivity_plus: ^2.3.6+1
   mailer: ^5.2.0
@@ -97,3 +97,16 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_native_splash:
+  color: "#088A08"
+  image: assets/milk.png
+  color_dark: "#088A08"
+  image_dark: assets/milk.png
+
+  android_12:
+    image: assets/milk.png
+    icon_background_color: "#088A08"
+    image_dark: assets/milk.png
+    icon_background_color_dark: "#088A08"
+
