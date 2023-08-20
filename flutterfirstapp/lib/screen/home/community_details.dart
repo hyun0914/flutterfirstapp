@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterfirstapp/screen/home/image_details.dart';
 import '../../main_page.dart';
 import '../layout/simple_bar_layout.dart';
 import '../reply/reply_page.dart';
@@ -222,7 +223,14 @@ SliverList subimageSliverList(BuildContext context){
   return SliverList(
     delegate: SliverChildBuilderDelegate(
         (context, index){
-          return Image.asset('assets/pizza.png');
+          return GestureDetector(
+            onTap: (){
+              if(index == index) {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => ImageDetails()));
+              }
+            },
+            child: Image.asset('assets/pizza.png')
+          );
         },
       childCount:  2,
     ),
