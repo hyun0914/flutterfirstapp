@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfirstapp/screen/store/product_detail_page.dart';
-import 'package:intl/intl.dart';
 
 import '../banner/banner_page.dart';
 
@@ -27,10 +26,10 @@ class _StorePageState extends State<StorePage> {
         Expanded(
           child: RefreshIndicator(
             onRefresh: () async {
-              await Future.delayed(Duration(seconds: 3));
+              await Future.delayed(const Duration(seconds: 3));
             },
             child: CustomScrollView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               slivers: [
                 SliverToBoxAdapter(
                   child: Column(
@@ -52,13 +51,13 @@ class _StorePageState extends State<StorePage> {
                         ),
                       ),
                       //스토어 작은 메뉴
-                      Padding(
+                      Container(
                         padding: const EdgeInsets.only(top: 8, right: 8, left: 8),
-                        child: ProductRow('아이템1', '아이템2', '아이템3', '아이템4', '아이템5'),
+                        child: productRow('아이템1', '아이템2', '아이템3', '아이템4', '아이템5'),
                       ),
-                      Padding(
+                      Container(
                         padding: const EdgeInsets.only(top: 8, right: 8, left: 8, bottom: 8),
-                        child: ProductRow('아이템6', '아이템7', '아이템8', '아이템9', '아이템10'),
+                        child: productRow('아이템6', '아이템7', '아이템8', '아이템9', '아이템10'),
                       ),
                       Container(
                         color: Colors.grey[300],
@@ -75,34 +74,34 @@ class _StorePageState extends State<StorePage> {
       ],
     );
   }
-  Widget ProductRow(String productName1, String productName2, String productName3, String productName4, String productName5){
+  Widget productRow(String productName1, String productName2, String productName3, String productName4, String productName5){
     return Row(
       children: [
         Expanded(
           flex: 1,
-          child: ProductTypeButton('${productName1}'),
+          child: productTypeButton(productName1),
         ),
         Expanded(
           flex: 1,
-          child: ProductTypeButton('${productName2}'),
+          child: productTypeButton(productName2),
         ),
         Expanded(
           flex: 1,
-          child: ProductTypeButton('${productName3}'),
+          child: productTypeButton(productName3),
         ),
         Expanded(
           flex: 1,
-          child: ProductTypeButton('${productName4}'),
+          child: productTypeButton(productName4),
         ),
         Expanded(
           flex: 1,
-          child: ProductTypeButton('${productName5}'),
+          child: productTypeButton(productName5),
         ),
       ],
     );
   }
 
-  Widget ProductTypeButton(String productTypeName){
+  Widget productTypeButton(String productTypeName){
     return SizedBox(
         child: Column(
           children: [
@@ -113,8 +112,8 @@ class _StorePageState extends State<StorePage> {
               ),
             ),
             Text(
-              '${productTypeName}',
-              style: TextStyle(
+              productTypeName,
+              style: const TextStyle(
                 fontSize: 12,
               ),
             )
@@ -152,7 +151,7 @@ class _StorePageState extends State<StorePage> {
                         ),
                       ],
                     ),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text('상품이름 ', style: TextStyle(fontSize: 12,) ),
@@ -160,7 +159,7 @@ class _StorePageState extends State<StorePage> {
                           textAlign: TextAlign.center,),
                     ],
                     ),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
 
@@ -182,7 +181,7 @@ class _StorePageState extends State<StorePage> {
           },
           childCount: 10,
         ),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
         ));
   }

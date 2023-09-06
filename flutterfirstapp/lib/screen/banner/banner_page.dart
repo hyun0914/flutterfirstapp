@@ -61,7 +61,7 @@ class _BannerPageState extends State<BannerPage> {
                 itemCount: widget.imgList.length,
                 controller: controller,
                 itemBuilder: (_, int index) {
-                  return InkWell(
+                  return GestureDetector(
                     onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => BannerDetailsPage(imgName: widget.imgList[index]))),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),

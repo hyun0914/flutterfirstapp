@@ -46,7 +46,7 @@ class _HomeCommunityPageState extends State<HomeCommunityPage> {
               await Future.delayed(Duration(seconds: 1));
             },
             child: CustomScrollView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               slivers: [
                 SliverToBoxAdapter(
                    child: Column(
@@ -56,9 +56,9 @@ class _HomeCommunityPageState extends State<HomeCommunityPage> {
                          height: 2,
                        ),
                        // 광고
-                       const Padding(
+                       Container(
                          padding: EdgeInsets.all(8.0),
-                         child: SizedBox(
+                         child: const SizedBox(
                            height: 120,
                            child: BannerPage(imgList: [
                              'assets/sale.png',
@@ -71,15 +71,15 @@ class _HomeCommunityPageState extends State<HomeCommunityPage> {
                          height: 8,
                        ),
                        // Top 10
-                       Padding(
+                       Container(
                          padding: const EdgeInsets.only(top: 18, left: 17),
-                         child: Row(
+                         child: const Row(
                            children: [
                              Text('이번주에 가장 인기 많은 스토리는?', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
                            ],
                          ),
                        ),
-                       Padding(
+                       Container(
                          padding: const EdgeInsets.only(top: 8, bottom: 8),
                          child: SizedBox(height: 180, child: topTenImg(context)),
                        ),
@@ -87,9 +87,9 @@ class _HomeCommunityPageState extends State<HomeCommunityPage> {
                          color: Colors.grey[300],
                          height: 8,
                        ),
-                       Padding(
+                       Container(
                          padding: const EdgeInsets.only(top: 15, bottom: 15, left: 17),
-                         child: Row(
+                         child: const Row(
                            children: [
                              Text('최근스토리에요~', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
                            ],
@@ -232,17 +232,17 @@ class _HomeCommunityPageState extends State<HomeCommunityPage> {
     return ScrollConfiguration(
       behavior: MyCustomScrollBehavior(),
       child: ListView.builder(
-          physics: BouncingScrollPhysics(),
-          padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+          physics: const BouncingScrollPhysics(),
+          padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
           scrollDirection: Axis.horizontal,
           itemCount: 10,
           itemBuilder: (context, index){
             return Stack(
               children: [
                 Positioned(
-                  child: Padding(
+                  child: Container(
                     padding: const EdgeInsets.all(7.0),
-                    child: InkWell(
+                    child: GestureDetector(
                       onTap: (){
                         Navigator.of(context).push(MaterialPageRoute(builder: (context) => CommunityDetails()));
                       },

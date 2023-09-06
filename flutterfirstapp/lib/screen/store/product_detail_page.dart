@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../layout/simple_bar_layout.dart';
-import '../mypage/login_page.dart';
 import '../mypage/review/my_review_writing_page.dart';
 import '../mypage/review/product_review_page.dart';
 
@@ -34,9 +33,9 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 child: Column(
                   children: [
                     Image.asset('assets/japanese.jpg'),
-                    Padding(
+                    Container(
                       padding: const EdgeInsets.fromLTRB(15, 5, 0, 5),
-                      child: Column(
+                      child: const Column(
                         children: [
                           Row(
                             children: [
@@ -84,19 +83,19 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       child: Column(
                         children: [
                           Image.asset('assets/japanese.jpg'),
-                          SizedBox(height: 10,),
+                          const SizedBox(height: 10,),
                           Image.asset('assets/japanese.jpg'),
-                          SizedBox(height: 10,),
+                          const SizedBox(height: 10,),
                           Image.asset('assets/japanese.jpg'),
-                          SizedBox(height: 10,),
+                          const SizedBox(height: 10,),
                           Image.asset('assets/japanese.jpg'),
                         ],
                       ),
                     ),
 
-                    Padding(
+                    Container(
                       padding: const EdgeInsets.fromLTRB(5, 7, 0, 7),
-                      child: Row(
+                      child: const Row(
                         children: [
                           Text('상품내용'),
                         ],
@@ -108,21 +107,21 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       height: 8,
                     ),
 
-                    Padding(
+                    Container(
                       padding: const EdgeInsets.all(5.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('리뷰 0'),
+                          const Text('리뷰 0'),
                           TextButton(onPressed: (){
                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyReviewWritingPage()));
-                          }, child: Text('리뷰 쓰기'))
+                          }, child: const Text('리뷰 쓰기'))
                         ],
                       ),
                     ),
-                    Padding(
+                    Container(
                       padding: const EdgeInsets.only(bottom: 10),
-                      child: Row(
+                      child: const Row(
                         children: [
                           Expanded(
                             flex: 2,

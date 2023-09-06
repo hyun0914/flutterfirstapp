@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../home/home_community_page.dart';
 import '../layout/simple_bar_layout.dart';
 
 class ReplyPage extends StatefulWidget {
@@ -11,8 +10,8 @@ class ReplyPage extends StatefulWidget {
 
 class _ReplyPageState extends State<ReplyPage> {
   final _replyController = TextEditingController();
-  String show_id ='';
-  String show_name = '';
+  String showId ='';
+  String showName = '';
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +21,7 @@ class _ReplyPageState extends State<ReplyPage> {
         children: [
           Expanded(
             child: ListView.builder(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 itemCount: 10,
                 itemBuilder:(context, index) {
                   return Padding(
@@ -33,7 +32,7 @@ class _ReplyPageState extends State<ReplyPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               ClipOval(child: Image.asset('assets/pizza.png', fit: BoxFit.fill, width: 20, height: 20,)),
-                              SizedBox(width: 10,),
+                              const SizedBox(width: 10,),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [

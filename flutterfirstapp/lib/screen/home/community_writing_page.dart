@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/cli_commands.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -198,9 +197,9 @@ class _CommunityWritingPageState extends State<CommunityWritingPage> {
     }
 
   takePhoto(ImageSource source) async{
-    final List<XFile>? pickedFile2 = await _picker.pickMultiImage(imageQuality:99, maxWidth: 2000, maxHeight: 2000,);
+    final List<XFile> pickedFile2 = await _picker.pickMultiImage(imageQuality:99, maxWidth: 2000, maxHeight: 2000,);
     setState(() {
-      _imageFile2 = pickedFile2!;
+      _imageFile2 = pickedFile2;
     });
   }
 }

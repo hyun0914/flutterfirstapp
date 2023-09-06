@@ -22,7 +22,7 @@ class _MyReviewDetailsPageState extends State<MyReviewDetailsPage> {
 
   String starNumber = '0';
 
-  PickedFile? _imageFile;
+  XFile? _imageFile;
   final ImagePicker _picker = ImagePicker();
 
   final _contentcontroller = TextEditingController();
@@ -225,7 +225,7 @@ class _MyReviewDetailsPageState extends State<MyReviewDetailsPage> {
   }
 
   takePhoto(ImageSource source) async {
-    final pickedFile = await _picker.getImage(source: source);
+    final pickedFile = await _picker.pickImage(source: source);
     setState(() {
       _imageFile = pickedFile!;
     });

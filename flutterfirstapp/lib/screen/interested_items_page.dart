@@ -42,7 +42,7 @@ class _InterestedItemsPageState extends State<InterestedItemsPage> {
                       });
                     },
                     child: Text(clickstr.toString(),
-                      style: TextStyle(fontSize: 20),),
+                      style: const TextStyle(fontSize: 20),),
                   ),
                 ),
               ],
@@ -52,7 +52,7 @@ class _InterestedItemsPageState extends State<InterestedItemsPage> {
             onRefresh: () async {
               await Future.delayed(Duration(seconds: 3));
             },
-            child: Padding(
+            child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               // child: GridView.builder(
               //   physics: BouncingScrollPhysics(),
