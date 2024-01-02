@@ -57,7 +57,7 @@ class _HomeCommunityPageState extends State<HomeCommunityPage> {
                        ),
                        // 광고
                        Container(
-                         padding: EdgeInsets.all(8.0),
+                         padding: const EdgeInsets.all(8.0),
                          child: const SizedBox(
                            height: 120,
                            child: BannerPage(imgList: [

@@ -1,6 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterfirstapp/screen/gradient_shadow.dart';
 import 'package:flutterfirstapp/screen/home/community_writing_page.dart';
 import 'package:flutterfirstapp/screen/home/home_community_page.dart';
 import 'package:flutterfirstapp/screen/search/search_page.dart';
@@ -35,10 +36,10 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
 
   int currentIndex = 0;
   final List<Widget> screenList = <Widget>[
-    HomeCommunityPage(),
-    StorePage(),
-    ShoppingBasketPage(),
-    MyPage(),
+    const HomeCommunityPage(),
+    const StorePage(),
+    const ShoppingBasketPage(),
+    const MyPage(),
     // ARPage(),
   ];
 
@@ -89,7 +90,10 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset('assets/hamburger.png', fit: BoxFit.fill, width: 30, height: 30,),
+                GestureDetector(
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const GradientShadow())),
+                  child: Image.asset('assets/hamburger.png', fit: BoxFit.fill, width: 30, height: 30,)
+                ),
                 const SizedBox(width: 10,),
                 InkWell(
                   onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SearchPage())),

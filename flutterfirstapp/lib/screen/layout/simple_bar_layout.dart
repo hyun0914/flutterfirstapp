@@ -16,13 +16,11 @@ class SimpleBarLayout extends StatelessWidget {
       appBar: AppBar(
         elevation: 0.0,
         actions: topIcon,
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.black45,
         ),
         backgroundColor: Colors.white,
-        title: Text(title, style: TextStyle(
-          color: Colors.black,
-        ),
+        title: Text(title, style: const TextStyle(color: Colors.black,),
         ),
         centerTitle: true,
       ),

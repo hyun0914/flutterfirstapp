@@ -18,18 +18,15 @@ class CommunityWritingPage extends StatefulWidget {
 
 class _CommunityWritingPageState extends State<CommunityWritingPage> {
 
-  String get_id = '';
-  String get_name = '';
-
   final ImagePicker _picker = ImagePicker();
   List<XFile> _imageFile2 = [];
 
-  final _titlecontroller = TextEditingController();
-  final _contentcontroller = TextEditingController();
+  final titleController = TextEditingController();
+  final contentController = TextEditingController();
 
-  void showToatst(String messsage) {
+  void showToatst(String message) {
     Fluttertoast.showToast(
-        msg: messsage,
+        msg: message,
         backgroundColor: Colors.black,
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.BOTTOM
@@ -38,38 +35,39 @@ class _CommunityWritingPageState extends State<CommunityWritingPage> {
 
   @override
   void dispose() {
-    _titlecontroller.dispose();
-    _contentcontroller.dispose();
+    titleController.dispose();
+    contentController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return  SimpleBarLayout(
+    return SimpleBarLayout(
       title: '글 올리기',
       topIcon: [
         TextButton(
-            onPressed: (){
-              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
-                  builder: (context) => MainPage()),  (route) => false);
-              showToatst('글작성 완료');
-            },
-            child: Text('올리기', style: TextStyle(color: Colors.green)))
+          onPressed: (){
+            Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
+                builder: (context) => MainPage()),  (route) => false);
+            showToatst('글작성 완료');
+          },
+          child: Text('올리기', style: TextStyle(color: Colors.green))
+        )
       ],
       children: [
         Expanded(
           child: CustomScrollView(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             slivers: [
-              wiringFroms(),
+              wiringFrom(),
               SliverToBoxAdapter(
                 child: Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 15, bottom: 10),
-                        child: SizedBox(height:100, child: imgFrom()),
-                      ),
-                    ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15, bottom: 10),
+                      child: SizedBox(height:120, child: imgFrom()),
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -79,7 +77,7 @@ class _CommunityWritingPageState extends State<CommunityWritingPage> {
     );
   }
 
-  SliverList wiringFroms(){
+  SliverList wiringFrom(){
     return SliverList(
         delegate: SliverChildListDelegate(
           [
@@ -88,7 +86,7 @@ class _CommunityWritingPageState extends State<CommunityWritingPage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 5,bottom: 2),
                   child: TextField(
-                    controller: _titlecontroller,
+                    controller: titleController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: '제목을 입력해주세요',
@@ -98,7 +96,7 @@ class _CommunityWritingPageState extends State<CommunityWritingPage> {
                 Container(
                   height: MediaQuery.of(context).size.height/2,
                   child: TextField(
-                    controller: _contentcontroller,
+                    controller: contentController,
                     keyboardType: TextInputType.multiline,
                     maxLines: null,
                     minLines: null,
