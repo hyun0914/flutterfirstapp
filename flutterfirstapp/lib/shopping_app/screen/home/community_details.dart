@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfirstapp/screen/home/image_details.dart';
-import '../../main_page.dart';
+import '../main_page.dart';
 import '../layout/simple_bar_layout.dart';
 import '../reply/reply_page.dart';
 import 'community_edit_page.dart';
+import 'image_details.dart';
 
 class CommunityDetails extends StatefulWidget {
 

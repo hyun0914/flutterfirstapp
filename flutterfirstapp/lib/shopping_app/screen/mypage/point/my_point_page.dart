@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfirstapp/screen/mypage/point/point_information_page.dart';
 
 import '../../layout/simple_bar_layout.dart';
+import 'point_information_page.dart';
 
 final ts = TextStyle(
   fontSize: 15,

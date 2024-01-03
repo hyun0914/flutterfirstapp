@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfirstapp/screen/layout/simple_bar_layout.dart';
+
+import '../layout/simple_bar_layout.dart';
 
 class ImageDetails extends StatelessWidget {
   const ImageDetails({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfirstapp/screen/search/search_next_page.dart';
 
 import '../layout/simple_bar_layout.dart';
+import 'search_next_page.dart';
 
 final _contentcontroller = TextEditingController();
 

@@ -1,14 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'mypage/inquiry/inquiry_page.dart';
-import 'mypage/login_page.dart';
-import 'mypage/my_coupon_page.dart';
-import 'mypage/order_delivery_lookup_page.dart';
-import 'mypage/point/my_point_page.dart';
-import 'mypage/review/my_review_page.dart';
-import 'mypage/servicecenter_page.dart';
-import 'mypage/setting/setting_page.dart';
+import 'inquiry/inquiry_page.dart';
+import 'login_page.dart';
+import 'my_coupon_page.dart';
+import 'order_delivery_lookup_page.dart';
+import 'point/my_point_page.dart';
+import 'review/my_review_page.dart';
+import 'servicecenter_page.dart';
+import 'setting/setting_page.dart';
 
 class MyPage extends StatefulWidget {
   const MyPage({Key? key}) : super(key: key);

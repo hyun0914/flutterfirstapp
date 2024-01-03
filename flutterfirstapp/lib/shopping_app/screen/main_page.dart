@@ -1,15 +1,16 @@
+import 'dart:io';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterfirstapp/screen/gradient_shadow.dart';
-import 'package:flutterfirstapp/screen/home/community_writing_page.dart';
-import 'package:flutterfirstapp/screen/home/home_community_page.dart';
-import 'package:flutterfirstapp/screen/search/search_page.dart';
-import 'package:flutterfirstapp/screen/shoppingbasket/shopping_basket_page.dart';
-import 'package:flutterfirstapp/screen/store/store_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import 'screen/my_page.dart';
+import 'home/community_writing_page.dart';
+import 'home/home_community_page.dart';
+import 'mypage/my_page.dart';
+import 'search/search_page.dart';
+import 'shoppingbasket/shopping_basket_page.dart';
+import 'store/store_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key,}) : super(key: key);
@@ -90,10 +91,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                GestureDetector(
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const GradientShadow())),
-                  child: Image.asset('assets/hamburger.png', fit: BoxFit.fill, width: 30, height: 30,)
-                ),
+                Image.asset('assets/hamburger.png', fit: BoxFit.fill, width: 30, height: 30,),
                 const SizedBox(width: 10,),
                 InkWell(
                   onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SearchPage())),
@@ -123,7 +121,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
           margin: EdgeInsets.only(bottom: kToolbarHeight),
           child: WillPopScope(
             child: screenList.elementAt(currentIndex),
-            onWillPop: onBackTwo,
+            onWillPop: Platform.isIOS? null : onBackTwo,
           ),
         ),
       ),

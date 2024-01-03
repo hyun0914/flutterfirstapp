@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfirstapp/screen/mypage/setting/profile_edit_page.dart';
-import 'package:flutterfirstapp/screen/mypage/setting/terms_of_service_page.dart';
+import 'package:flutterfirstapp/shopping_app/screen/mypage/setting/profile_edit_page.dart';
+import 'package:flutterfirstapp/shopping_app/screen/mypage/setting/terms_of_service_page.dart';
 
-import '../../../main_page.dart';
+import '../../main_page.dart';
 import '../../layout/simple_bar_layout.dart';
 import 'change_password_page.dart';
 

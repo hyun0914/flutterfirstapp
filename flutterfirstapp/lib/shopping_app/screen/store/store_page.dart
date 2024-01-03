@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfirstapp/screen/store/product_detail_page.dart';
 
 import '../banner/banner_page.dart';
+import 'product_detail_page.dart';
 
 
 class StorePage extends StatefulWidget {

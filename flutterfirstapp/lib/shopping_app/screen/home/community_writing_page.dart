@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../main_page.dart';
+import '../main_page.dart';
 import '../layout/simple_bar_layout.dart';
 
 

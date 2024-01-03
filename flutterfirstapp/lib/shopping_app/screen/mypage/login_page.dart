@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutterfirstapp/screen/mypage/signup_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../layout/simple_bar_layout.dart';
+import 'signup_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
