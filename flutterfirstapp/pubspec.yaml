@@ -37,13 +37,16 @@ dependencies:
   url_launcher: ^6.1.5
   image_picker: ^1.0.4
   flutter_native_splash: ^2.2.19
-  fluttertoast: ^8.0.9
-  connectivity_plus: ^2.3.6+1
+  fluttertoast: ^8.2.4
+  connectivity_plus: ^5.0.2
   mailer: ^5.2.0
   dotted_border: ^2.0.0+2
   intl: ^0.17.0
   smooth_page_indicator: ^1.0.1
   flutter_carousel_widget: ^2.2.0
+  adaptive_action_sheet: ^2.0.2
+  badges: ^3.1.2
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:

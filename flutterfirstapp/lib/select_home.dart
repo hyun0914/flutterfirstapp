@@ -18,13 +18,13 @@ class SelectHome extends StatelessWidget {
               Center(
                 child: ElevatedButton(
                   onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => MainPage())),
-                  child: Text('쇼핑앱화면')
+                  child: const Text('쇼핑앱화면')
                 ),
               ),
               Center(
                 child: ElevatedButton(
                   onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SelectTest())),
-                  child: Text('테스트앱화면')
+                  child: const Text('테스트앱화면')
                 ),
               ),
             ],

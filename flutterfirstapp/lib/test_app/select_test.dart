@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'screen/gradient_shadow.dart';
+import 'screen/test01_screen.dart';
 
 class SelectTest extends StatelessWidget {
   const SelectTest({super.key});
@@ -16,8 +16,8 @@ class SelectTest extends StatelessWidget {
               children: [
                 Center(
                   child: ElevatedButton(
-                      onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => GradientShadow())),
-                      child: Text('그라데이션, 그림자 테스트')
+                    onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => Test01Screen())),
+                    child: const Text('그라데이션, 그림자, 토스트메세지\n FlutterCarousel')
                   ),
                 ),
               ],
