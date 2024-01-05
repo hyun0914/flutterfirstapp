@@ -10,7 +10,12 @@ PODS:
     - Toast
   - image_picker_ios (0.0.1):
     - Flutter
+  - package_info_plus (0.4.5):
+    - Flutter
   - ReachabilitySwift (5.0.0)
+  - shared_preferences_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
   - Toast (4.0.0)
   - url_launcher_ios (0.0.1):
     - Flutter
@@ -21,6 +26,8 @@ DEPENDENCIES:
   - flutter_native_splash (from `.symlinks/plugins/flutter_native_splash/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
+  - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
+  - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
 SPEC REPOS:
@@ -39,18 +46,24 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/fluttertoast/ios"
   image_picker_ios:
     :path: ".symlinks/plugins/image_picker_ios/ios"
+  package_info_plus:
+    :path: ".symlinks/plugins/package_info_plus/ios"
+  shared_preferences_foundation:
+    :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
 SPEC CHECKSUMS:
-  connectivity_plus: 413a8857dd5d9f1c399a39130850d02fe0feaf7e
+  connectivity_plus: bf0076dd84a130856aa636df1c71ccaff908fa1d
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_native_splash: 52501b97d1c0a5f898d687f1646226c1f93c56ef
   fluttertoast: fafc4fa4d01a6a9e4f772ecd190ffa525e9e2d9c
   image_picker_ios: 4a8aadfbb6dc30ad5141a2ce3832af9214a705b5
+  package_info_plus: 115f4ad11e0698c8c1c5d8a689390df880f47e85
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  shared_preferences_foundation: 5b919d13b803cadd15ed2dc053125c68730e5126
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  url_launcher_ios: 08a3dfac5fb39e8759aeb0abbd5d9480f30fc8b4
+  url_launcher_ios: bf5ce03e0e2088bad9cc378ea97fa0ed5b49673b
 
 PODFILE CHECKSUM: 4e8f8b2be68aeea4c0d5beb6ff1e79fface1d048
 

@@ -112,7 +112,7 @@ class _MyPageState extends State<MyPage> {
                                  width: 100,
                                  height: 100,
                                  child: Image.asset(
-                                   'assets/chicken.jpg',
+                                   'assets/images/chicken.jpg',
                                    fit: BoxFit.fill,
                                  ),
                                ),

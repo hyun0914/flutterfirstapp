@@ -1,3 +1,5 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutterfirstapp/select_home.dart';
@@ -7,9 +9,9 @@ void main() {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   FlutterNativeSplash.remove();
   runApp(
-    const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SelectHome(),
+     DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (BuildContext context) => const SelectHome(),
     ),
   );
 }

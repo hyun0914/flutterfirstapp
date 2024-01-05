@@ -11,7 +11,7 @@ class ImageDetails extends StatelessWidget {
       title: '이미지 상세',
       topIcon: [],
       children: [
-        InteractiveViewer(child: Image.asset('assets/pizza.png')),
+        InteractiveViewer(child: Image.asset('assets/images/pizza.png')),
       ],
     );
   }

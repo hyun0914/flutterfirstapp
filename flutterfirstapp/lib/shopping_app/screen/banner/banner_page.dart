@@ -66,9 +66,9 @@ class _BannerPageState extends State<BannerPage> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
                       child: Image.asset(
-                            widget.imgList[index],
-                            fit: BoxFit.fill,
-                          ),
+                        widget.imgList[index],
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   );
                 },

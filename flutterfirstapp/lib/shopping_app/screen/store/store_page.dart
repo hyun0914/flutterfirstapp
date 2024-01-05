@@ -44,9 +44,9 @@ class _StorePageState extends State<StorePage> {
                         child: SizedBox(
                           height: 200,
                           child: BannerPage(imgList: [
-                            'assets/sale.png',
-                            'assets/screen.png',
-                            'assets/email_img.png'
+                            'assets/images/sale.png',
+                            'assets/images/screen.png',
+                            'assets/images/email_img.png'
                           ],),
                         ),
                       ),
@@ -108,7 +108,7 @@ class _StorePageState extends State<StorePage> {
             ClipRRect(
               borderRadius: BorderRadius.circular(11.0),
               child: Image.asset(
-                'assets/food.png', width: MediaQuery.of(context).size.width / 6,
+                'assets/images/food.png', width: MediaQuery.of(context).size.width / 6,
               ),
             ),
             Text(
@@ -146,7 +146,7 @@ class _StorePageState extends State<StorePage> {
                           padding: const EdgeInsets.fromLTRB(13, 7, 13, 7),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(10.0),
-                            child: Image.asset('assets/japanese.jpg', fit: BoxFit.fill, width: 170,),
+                            child: Image.asset('assets/images/japanese.jpg', fit: BoxFit.fill, width: 170,),
                           ),
                         ),
                       ],

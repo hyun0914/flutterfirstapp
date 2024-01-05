@@ -89,7 +89,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
         children: [
           CircleAvatar(
             radius: 80,
-            backgroundImage: _imageFile == null ? AssetImage('assets/image/Flowerpot.jpg') : FileImage((File(_imageFile!.path))) as ImageProvider,
+            backgroundImage: _imageFile == null ? const AssetImage('assets/image/Flowerpot.jpg') : FileImage((File(_imageFile!.path))) as ImageProvider,
           ),
           Positioned(
               bottom: 10,

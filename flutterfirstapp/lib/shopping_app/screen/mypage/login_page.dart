@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               children: [
                 SizedBox(height: 9,),
-                Image.asset('assets/hen.png', width: 150, height: 200,),
+                Image.asset('assets/images/hen.png', width: 150, height: 200,),
                 Container(
                   padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
                   child: TextField(

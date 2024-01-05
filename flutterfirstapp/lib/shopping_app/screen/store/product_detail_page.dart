@@ -32,7 +32,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    Image.asset('assets/japanese.jpg'),
+                    Image.asset('assets/images/japanese.jpg'),
                     Container(
                       padding: const EdgeInsets.fromLTRB(15, 5, 0, 5),
                       child: const Column(
@@ -82,13 +82,13 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
                         children: [
-                          Image.asset('assets/japanese.jpg'),
+                          Image.asset('assets/images/japanese.jpg'),
                           const SizedBox(height: 10,),
-                          Image.asset('assets/japanese.jpg'),
+                          Image.asset('assets/images/japanese.jpg'),
                           const SizedBox(height: 10,),
-                          Image.asset('assets/japanese.jpg'),
+                          Image.asset('assets/images/japanese.jpg'),
                           const SizedBox(height: 10,),
-                          Image.asset('assets/japanese.jpg'),
+                          Image.asset('assets/images/japanese.jpg'),
                         ],
                       ),
                     ),
@@ -300,7 +300,7 @@ class _Review3State extends State<Review3> {
                   SizedBox(height: 10,),
                   Row(
                     children: [
-                      Image.asset('assets/hen.png', fit: BoxFit.fill, width: 20, height: 20,),
+                      Image.asset('assets/images/hen.png', fit: BoxFit.fill, width: 20, height: 20,),
                       SizedBox(width: 4,),
                       Text('리뷰내용')
                     ],

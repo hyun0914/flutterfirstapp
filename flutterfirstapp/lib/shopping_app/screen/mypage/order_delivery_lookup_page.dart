@@ -32,7 +32,7 @@ class OrderDeliveryLookupPage extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Image.asset('assets/hamburger.png', width: MediaQuery.of(context).size.width/5,),
+                        Image.asset('assets/images/hamburger.png', width: MediaQuery.of(context).size.width/5,),
                         SizedBox(
                           width: 15,
                         ),

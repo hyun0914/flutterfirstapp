@@ -1,9 +1,18 @@
 import 'package:adaptive_action_sheet/adaptive_action_sheet.dart';
+import 'package:d_chart/d_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:badges/badges.dart' as badges;
+import 'dart:math' as math;
+
+import 'package:intl/intl.dart';
+import 'package:package_info_plus/package_info_plus.dart';
+
+// 참고사이트 https://velog.io/@tmdgks2222/Flutter-intl
+// '###,###,###', '###,###' 결과 값은 같다
+var price = NumberFormat('###,###,###');
 
 class Test01Screen extends StatelessWidget {
   const Test01Screen({super.key});
@@ -17,6 +26,18 @@ class Test01Screen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                Container(
+                  padding: const EdgeInsets.only(top: 20, bottom: 10),
+                  child: ElevatedButton(
+                    onPressed: () => packageInfoGet(),
+                    child: const Text('package_info_plus  테스트')
+                  ),
+                ),
+                Container(
+                  color: Colors.white,
+                  padding: const EdgeInsets.only(top: 20, bottom: 20, left: 20, right: 20),
+                  child: Text('${price.format(10000)}원'),
+                ),
                 Container(
                   padding: const EdgeInsets.only(top: 20, bottom: 10),
                   child: ElevatedButton(
@@ -59,51 +80,61 @@ class Test01Screen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
-                  width: 140,
-                  height: 149,
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(12)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.08),
-                        spreadRadius: 0,
-                        blurRadius: 16,
-                        offset: const Offset(0, 4),
-                      )
+                AspectRatio(
+                  aspectRatio: 1.4,
+                  child: DChartPieO(
+                    data: [
+                      OrdinalData(domain: 'sales', measure: 70, color: const Color.fromRGBO(17, 159, 111, 1)),
+                      OrdinalData(domain: 'default', measure: 20, color: const Color.fromRGBO(247, 90, 93, 1)),
+                      OrdinalData(domain: 'purchase', measure: 10, color: const Color.fromRGBO(240, 240, 240, 1)),
                     ],
-                    gradient: const LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Color.fromRGBO(255, 216, 67, 1),
-                        Color.fromRGBO(238, 175, 11, 1),
-                      ],
-                    )
+                    configRenderPie: const ConfigRenderPie(
+                      arcWidth: 20,
+                      arcLength: 7 / 5 * 3.14,
+                      startAngle: 4 / 5 * 3.14,
+                    ),
                   ),
                 ),
-                const SizedBox(height: 20,),
                 Container(
-                  width: 140,
-                  height: 149,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(12)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.08),
-                        spreadRadius: 0,
-                        blurRadius: 16,
-                        offset: const Offset(0, 4),
-                      )
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: SizedBox(
+                          height: 10,
+                          child: Transform.rotate(
+                            angle: 180 * math.pi / 180,
+                            child: const DChartSingleBar(
+                              radius: BorderRadius.only(
+                                topRight: Radius.circular(20),
+                                bottomRight: Radius.circular(20)
+                              ),
+                              foregroundColor: Color.fromRGBO(17, 159, 111, 1),
+                              backgroundColor: Color.fromRGBO(219, 219, 219, 1),
+                              value: 80,
+                              max: 100,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const Expanded(
+                        flex: 1,
+                        child: SizedBox(
+                          height: 10,
+                          child: DChartSingleBar(
+                            radius: BorderRadius.only(
+                              topRight: Radius.circular(20),
+                              bottomRight: Radius.circular(20)
+                            ),
+                            foregroundColor: Color.fromRGBO(247, 90, 93, 1),
+                            backgroundColor: Color.fromRGBO(219, 219, 219, 1),
+                            value: 20,
+                            max: 100,
+                          ),
+                        ),
+                      ),
                     ],
-                    gradient: const LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Color.fromRGBO(255, 163, 77, 1),
-                        Color.fromRGBO(238, 132, 34, 1),
-                      ],
-                    )
                   ),
                 ),
                 const SizedBox(height: 30,),
@@ -115,6 +146,9 @@ class Test01Screen extends StatelessWidget {
                     autoPlay: true,
                     autoPlayInterval: const Duration(seconds: 4),
                     enableInfiniteScroll: true,
+                    // 위젯을 한개씩 보이게 설정
+                    // viewportFraction: 1.0,
+                    // padEnds: false, // 왼쪽부분 표시x 오른쪽부분 표시o
                   ),
                   items: [1,2,3,4].map((i) {
                     return Builder(
@@ -162,4 +196,11 @@ void actionSheet({
     ],
     cancelAction: CancelAction(title: const Text('취소')),
   );
+}
+
+Future<PackageInfo> packageInfoGet() async {
+  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  showToast(msg: packageInfo.appName);
+  print(packageInfo.appName);
+  return packageInfo;
 }

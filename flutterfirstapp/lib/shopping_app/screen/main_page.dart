@@ -91,7 +91,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset('assets/hamburger.png', fit: BoxFit.fill, width: 30, height: 30,),
+                Image.asset('assets/images/hamburger.png', fit: BoxFit.fill, width: 30, height: 30,),
                 const SizedBox(width: 10,),
                 InkWell(
                   onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SearchPage())),
@@ -120,8 +120,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
           width: 720,
           margin: EdgeInsets.only(bottom: kToolbarHeight),
           child: WillPopScope(
-            child: screenList.elementAt(currentIndex),
             onWillPop: Platform.isIOS? null : onBackTwo,
+            child: screenList.elementAt(currentIndex),
           ),
         ),
       ),
@@ -135,9 +135,14 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         child: const Icon(Icons.add_circle_outline, size: 40,)
       )
       : const SizedBox(),
-
+      // 참고 영상 https://www.youtube.com/watch?v=MW-KVmnXuiE
+      // BottomAppBar 위젯 shape: CircularNotchedRectangle(), notchMargin: 7, 추가 하면 notched가 된다.
+      // 뒤에 부분 표시할려면 Scaffold 위젯의 extendBody: true, 추가한다.
+      // 중앙 이동
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       // 하단 네비게이션바
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.grey,
         currentIndex: currentIndex,
         elevation: 0.0,
         items: [

@@ -129,7 +129,7 @@ class _CommunityDetailsState extends State<CommunityDetails> {
                           children: [
                             Row(
                               children: [
-                                ClipOval(child: Image.asset('assets/hen.png', fit: BoxFit.fill, width: 15, height: 15,)),
+                                ClipOval(child: Image.asset('assets/images/hen.png', fit: BoxFit.fill, width: 15, height: 15,)),
                                 SizedBox(width: 4,),
                                 Text('닉네임', style: TextStyle(fontSize: 12),),
                                 SizedBox(width: 4,),
@@ -229,7 +229,7 @@ SliverList subimageSliverList(BuildContext context){
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => ImageDetails()));
               }
             },
-            child: Image.asset('assets/pizza.png')
+            child: Image.asset('assets/images/pizza.png')
           );
         },
       childCount:  2,

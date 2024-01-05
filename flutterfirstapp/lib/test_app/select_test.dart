@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'screen/test01_screen.dart';
+import 'screen/test02_screen.dart';
 
 class SelectTest extends StatelessWidget {
   const SelectTest({super.key});
@@ -16,8 +17,14 @@ class SelectTest extends StatelessWidget {
               children: [
                 Center(
                   child: ElevatedButton(
-                    onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => Test01Screen())),
-                    child: const Text('그라데이션, 그림자, 토스트메세지\n FlutterCarousel')
+                    onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const Test01Screen())),
+                    child: const Text('테스트01')
+                  ),
+                ),
+                Center(
+                  child: ElevatedButton(
+                    onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const Test02Screen())),
+                    child: const Text('테스트02')
                   ),
                 ),
               ],

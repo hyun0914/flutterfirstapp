@@ -111,7 +111,7 @@ class ProductReviewPage extends StatelessWidget {
                 SizedBox(height: 10,),
                 Row(
                   children: [
-                    Image.asset('assets/hen.png', fit: BoxFit.fill, width: 20, height: 20,),
+                    Image.asset('assets/images/hen.png', fit: BoxFit.fill, width: 20, height: 20,),
                     SizedBox(width: 4,),
                     Text('디자인으로는 괜찮다,사용이 엄청나네 편리하다.')
                   ],
@@ -142,7 +142,7 @@ class ProductReviewPage extends StatelessWidget {
                 SizedBox(height: 10,),
                 Row(
                   children: [
-                    Image.asset('assets/hen.png', fit: BoxFit.fill, width: 20, height: 20,),
+                    Image.asset('assets/images/hen.png', fit: BoxFit.fill, width: 20, height: 20,),
                     SizedBox(width: 4,),
                     Text('디자인으로는 괜찮다,사용이 엄청나네 편리하다.')
                   ],
@@ -173,7 +173,7 @@ class ProductReviewPage extends StatelessWidget {
                 SizedBox(height: 10,),
                 Row(
                   children: [
-                    Image.asset('assets/hen.png', fit: BoxFit.fill, width: 20, height: 20,),
+                    Image.asset('assets/images/hen.png', fit: BoxFit.fill, width: 20, height: 20,),
                     SizedBox(width: 4,),
                     Text('디자인으로는 괜찮다,사용이 엄청나네 편리하다.')
                   ],

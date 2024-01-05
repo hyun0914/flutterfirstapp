@@ -61,8 +61,8 @@ class _HomeCommunityPageState extends State<HomeCommunityPage> {
                          child: const SizedBox(
                            height: 120,
                            child: BannerPage(imgList: [
-                             'assets/sale.png',
-                             'assets/screen.png',
+                             'assets/images/sale.png',
+                             'assets/images/screen.png',
                            ],),
                          ),
                        ),
@@ -113,7 +113,7 @@ class _HomeCommunityPageState extends State<HomeCommunityPage> {
                                   padding: const EdgeInsets.fromLTRB(13, 7, 13, 7),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(10.0),
-                                    child: Image.asset('assets/chicken.jpg'),
+                                    child: Image.asset('assets/images/chicken.jpg'),
                                   ),
                                 ),
                                 Padding(
@@ -129,7 +129,7 @@ class _HomeCommunityPageState extends State<HomeCommunityPage> {
                                         children: [
                                           Row(
                                             children: [
-                                              ClipOval(child: Image.asset('assets/hen.png', fit: BoxFit.fill, width: 15, height: 15,)),
+                                              ClipOval(child: Image.asset('assets/images/hen.png', fit: BoxFit.fill, width: 15, height: 15,)),
                                               SizedBox(width: 5,),
                                               Text('닉네임', style: TextStyle(fontSize: 12),),
                                             ],
@@ -249,7 +249,7 @@ class _HomeCommunityPageState extends State<HomeCommunityPage> {
                       child: ClipRRect(
                         borderRadius:
                         BorderRadius.circular(3.0),
-                        child: Image.asset('assets/pizza.png'),
+                        child: Image.asset('assets/images/pizza.png'),
                       ),
                     ),
                   ),

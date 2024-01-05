@@ -129,7 +129,7 @@ class _MyReviewDetailsPageState extends State<MyReviewDetailsPage> {
                     ),
                   ),
                   Container(
-                      child: Image.asset('assets/hen.png'),
+                      child: Image.asset('assets/images/hen.png'),
                   ),
                   Row(
                     children: [
