@@ -135,9 +135,6 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         child: const Icon(Icons.add_circle_outline, size: 40,)
       )
       : const SizedBox(),
-      // 참고 영상 https://www.youtube.com/watch?v=MW-KVmnXuiE
-      // BottomAppBar 위젯 shape: CircularNotchedRectangle(), notchMargin: 7, 추가 하면 notched가 된다.
-      // 뒤에 부분 표시할려면 Scaffold 위젯의 extendBody: true, 추가한다.
       // 중앙 이동
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       // 하단 네비게이션바
@@ -145,6 +142,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         backgroundColor: Colors.grey,
         currentIndex: currentIndex,
         elevation: 0.0,
+        // 참고사이트 https://stackoverflow.com/questions/49029966/how-to-change-bottomnavigationbaritem-icon-when-selected-flutter
         items: [
           BottomNavigationBarItem(
               icon: (currentIndex==0)? const Icon(Icons.home) : const Icon(Icons.home_outlined),
@@ -163,15 +161,16 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         ],
         selectedItemColor: Colors.green,
         unselectedItemColor: Colors.black45,
-        showUnselectedLabels: true,
-        // BottomNavigationBarItem3개 이상시 클릭시 움직임없애기
-        type: BottomNavigationBarType.fixed,
+        // 참고사이트 https://sleepy-it.tistory.com/23
+        showUnselectedLabels: true, // label 표시 여부 설정
+        // 참고사이트 https://velog.io/@sharveka_11/BottomNavigationBar
+        type: BottomNavigationBarType.fixed, // BottomNavigationBarItem3개 이상시 클릭시 움직임없애기
         onTap: (value){
           searchFocus.unfocus();
           setState(() {
             if(currentIndex == 0 || currentIndex == 1 || currentIndex == 4){
               //스크롤 젤위로 위치시키기
-              controller!.jumpTo(0);
+              controller.jumpTo(0);
             }
             currentIndex = value;
           });

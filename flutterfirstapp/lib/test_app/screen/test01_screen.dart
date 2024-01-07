@@ -33,11 +33,13 @@ class Test01Screen extends StatelessWidget {
                     child: const Text('package_info_plus  테스트')
                   ),
                 ),
+
                 Container(
                   color: Colors.white,
                   padding: const EdgeInsets.only(top: 20, bottom: 20, left: 20, right: 20),
                   child: Text('${price.format(10000)}원'),
                 ),
+
                 Container(
                   padding: const EdgeInsets.only(top: 20, bottom: 10),
                   child: ElevatedButton(
@@ -45,6 +47,7 @@ class Test01Screen extends StatelessWidget {
                     child: const Text('토스트메세지 테스트')
                   ),
                 ),
+
                 Container(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: ElevatedButton(
@@ -52,6 +55,7 @@ class Test01Screen extends StatelessWidget {
                     child: const Text('Adaptive action sheet 테스트')
                   ),
                 ),
+
                 Container(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: const badges.Badge(
@@ -59,6 +63,7 @@ class Test01Screen extends StatelessWidget {
                     child: Icon(Icons.settings),
                   ),
                 ),
+
                 Container(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: Row(
@@ -80,6 +85,7 @@ class Test01Screen extends StatelessWidget {
                     ],
                   ),
                 ),
+
                 AspectRatio(
                   aspectRatio: 1.4,
                   child: DChartPieO(
@@ -95,6 +101,7 @@ class Test01Screen extends StatelessWidget {
                     ),
                   ),
                 ),
+
                 Container(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: Row(
@@ -137,7 +144,7 @@ class Test01Screen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 30,),
+
                 FlutterCarousel(
                   options: CarouselOptions(
                     height: 400.0,
@@ -146,7 +153,7 @@ class Test01Screen extends StatelessWidget {
                     autoPlay: true,
                     autoPlayInterval: const Duration(seconds: 4),
                     enableInfiniteScroll: true,
-                    // 위젯을 한개씩 보이게 설정
+                    // 위젯을 fill로 보이게 설정
                     // viewportFraction: 1.0,
                     // padEnds: false, // 왼쪽부분 표시x 오른쪽부분 표시o
                   ),
