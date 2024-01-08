@@ -205,9 +205,15 @@ void actionSheet({
   );
 }
 
-Future<PackageInfo> packageInfoGet() async {
+Future<List<String?>> packageInfoGet() async {
   PackageInfo packageInfo = await PackageInfo.fromPlatform();
-  showToast(msg: packageInfo.appName);
-  print(packageInfo.appName);
-  return packageInfo;
+  List<String?> getPackageInfo = [];
+  getPackageInfo.add(packageInfo.appName);
+  getPackageInfo.add(packageInfo.installerStore);
+  getPackageInfo.add(packageInfo.version);
+  getPackageInfo.add(packageInfo.buildSignature);
+  getPackageInfo.add(packageInfo.buildNumber);
+  showToast(msg: getPackageInfo.toString());
+  print(getPackageInfo);
+  return getPackageInfo;
 }

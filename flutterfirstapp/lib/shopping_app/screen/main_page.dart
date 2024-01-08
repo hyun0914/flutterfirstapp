@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'home/community_writing_page.dart';
@@ -24,6 +25,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   FocusNode searchFocus = FocusNode();
 
   DateTime? backPressTime;
+
+  bool isShowFab = true;
 
   Future<bool> onBackTwo() {
     DateTime now = DateTime.now();
@@ -115,18 +118,38 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
           ),
         ],
       ),
-      body: Center(
-        child: Container(
-          width: 720,
-          margin: EdgeInsets.only(bottom: kToolbarHeight),
-          child: WillPopScope(
-            onWillPop: Platform.isIOS? null : onBackTwo,
-            child: screenList.elementAt(currentIndex),
+      // floatingActionButton 스크롤 시 숨기기
+      // 참고사이트 https://stackoverflow.com/questions/45631350/flutter-hiding-floatingactionbutton
+      body: NotificationListener<UserScrollNotification>(
+        onNotification: (notification){
+          final ScrollDirection direction = notification.direction;
+          if (direction == ScrollDirection.reverse) {
+            // ScrollDirection.reverse일때 숨기고
+            setState(() {
+              isShowFab = false;
+            });
+          }
+          else if (direction == ScrollDirection.forward) {
+            // ScrollDirection.forward 일때 다시 표시
+            setState(() {
+              isShowFab = true;
+            });
+          }
+          return true;
+        },
+        child: Center(
+          child: Container(
+            width: 720,
+            margin: EdgeInsets.only(bottom: kToolbarHeight),
+            child: WillPopScope(
+              onWillPop: Platform.isIOS? null : onBackTwo,
+              child: screenList.elementAt(currentIndex),
+            ),
           ),
         ),
       ),
 
-      floatingActionButton:  currentIndex == 0 ? FloatingActionButton(
+      floatingActionButton: isShowFab? currentIndex == 0 ? FloatingActionButton(
         elevation: 0.0,
         backgroundColor: Colors.green,
         onPressed: () {
@@ -134,6 +157,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         },
         child: const Icon(Icons.add_circle_outline, size: 40,)
       )
+      : const SizedBox()
       : const SizedBox(),
       // 중앙 이동
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

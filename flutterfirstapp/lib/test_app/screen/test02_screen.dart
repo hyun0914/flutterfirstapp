@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 // 위젯 화면 fill로 하는법
 // Row 위젯으로 감싼 후 child 위젯을 Expanded 위젯으로 감싼다
@@ -23,14 +24,22 @@ class Test02Screen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<TooltipState> tooltipKey = GlobalKey<TooltipState>();
+
     return Scaffold(
       extendBody: true,
+      // 참고사이트 https://stackoverflow.com/questions/69001896/how-to-hide-floatingactionbutton-under-keyboard-and-not-textformfield-in-flutter
+      // floatingActionButton 키보드 뒤로 가는 설정 false 이면 뒤로간다
+      resizeToAvoidBottomInset: false,
       floatingActionButton: FloatingActionButton(onPressed: () {  },),
       // 참고 영상 https://www.youtube.com/watch?v=MW-KVmnXuiE
       // BottomAppBar 위젯 shape: CircularNotchedRectangle(), notchMargin: 7, 추가 하면 notched가 된다.
       // 뒤에 부분 표시할려면 Scaffold 위젯의 extendBody: true, 추가한다.
       // 중앙 이동
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation:
+        // floatingActionButton 키보드 뒤로 숨기는 방법
+        //MediaQuery.of(context).viewInsets.bottom != 0 ? null :
+        FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: const BottomAppBar(
         shape: CircularNotchedRectangle(),
         notchMargin: 7,
@@ -49,6 +58,54 @@ class Test02Screen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                // 참고사이트 https://velog.io/@haram2/Tooltip-class
+                GestureDetector(
+                  onTap: () => tooltipKey.currentState?.ensureTooltipVisible(),
+                  child: Container(
+                    padding: const EdgeInsets.only(top: 20, bottom: 20),
+                    child: Tooltip(
+                      key: tooltipKey,
+                      message: 'Tooltip 메세지 입니다.',
+                      triggerMode: TooltipTriggerMode.manual,
+                      showDuration: const Duration(seconds: 1),
+                      height: 40,
+                      padding: const EdgeInsets.all(8.0),
+                      decoration: const BoxDecoration(
+                        color: Colors.green,
+                      ),
+                      textStyle: const TextStyle(fontSize: 24,),
+                      child: const Text('Tooltip 테스트'),
+                    ),
+                  ),
+                ),
+
+                // 비동기로 하는법 onTap: () async { await Clipboard.setData(ClipboardData(text: "비동기 글자 복사")); },
+                // 참고사이트
+                // https://velog.io/@tororae/Flutter-%ED%81%B4%EB%A6%BD%EB%B3%B4%EB%93%9CClipBoard-%EC%97%90-%EA%B8%80-%EB%B3%B5%EC%82%AC%ED%95%98%EA%B8%B0
+                GestureDetector(
+                  onTap: () => Clipboard.setData(const ClipboardData(text: '텍스트 복사 하기')),
+                  child: Container(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: Container(
+                      color: Colors.lightGreen,
+                      child: const Text('글자 복사하기', style: TextStyle(fontSize: 20),),
+                    ),
+                  ),
+                ),
+
+                // 정렬 종류
+                // topLeft
+                // topCenter
+                // topRight
+                // centerLeft
+                // center
+                // centerRight
+                // bottomLeft
+                // bottomCenter
+                // bottomRight
+                // 참고사이트 https://naman-develop.tistory.com/8
+                const Align(alignment: Alignment.topLeft, child: Text('중앙 정렬')),
+
                 // 그림자 설정
                 // color 그림자 색상
                 // blurRadius 그림자 효과를 선명도(0일 수록 그림자선이 선명해진다)
@@ -208,25 +265,68 @@ class Test02Screen extends StatelessWidget {
                 // 참고사이트 https://www.woolha.com/tutorials/flutter-using-imageicon-widget-examples
                 Container(
                   padding: const EdgeInsets.only(top: 20),
-                  child: const ImageIcon(AssetImage('assets/images/hen.png')),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const ImageIcon(AssetImage('assets/images/hen.png'), size: 60,),
+                      // 투명도 값 넣기 withOpacity(0.2)
+                      // 참고사이트 https://yj95.tistory.com/220
+                      Icon(Icons.camera, color: Colors.black.withOpacity(0.2), size: 60,),
+                    ],
+                  ),
                 ),
 
-                // 참고사이트 https://velog.io/@haram2/Tooltip-class
+                // Text 글자를 일정길이를 넘어서면 ... 표시하는 법
+                // 참고사이트
+                // https://velog.io/@gunwng123/Text-%EC%9C%84%EC%A0%AF%EC%97%90-%ED%91%9C%ED%98%84%ED%95%98%EA%B3%A0%EC%9E%90-%ED%95%98%EB%8A%94-String%EC%9D%98-%EA%B8%B8%EC%9D%B4%EA%B0%80-%EA%B8%B4-%EA%B2%BD%EC%9A%B0-%EC%B2%98%EB%A6%AC-%EB%B0%A9%EB%B2%95
                 Container(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: const Tooltip(
-                    message: 'Tooltip 메세지 입니다.',
-                    height: 40,
-                    padding: EdgeInsets.all(8.0),
-                    preferBelow: false,
-                    textStyle: TextStyle(
-                      fontSize: 24,
+                  padding: const EdgeInsets.only(top: 20, bottom: 20),
+                  width: 150,
+                  child: const Text('제목테스트123456789101112131415',
+                  style: TextStyle(color: Colors.black,),
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
+                  )
+                ),
+
+                GestureDetector(
+                  onTap: (){
+                    debugPrint('빈 영역 클릭');
+                    // Scaffold.of(context).hideCurrentSnackBar(); 중복 방지
+                    // 참고사이트 https://dopble2k.tistory.com/4
+                    ScaffoldMessenger.of(context)
+                    ..hideCurrentSnackBar()
+                    ..showSnackBar(
+                      const SnackBar(content: Text('빈 영역 클릭')),
+                    );
+                  },
+                  child: Container(
+                    width: 150,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      border: Border.all(),
+                      color: Colors.transparent,
                     ),
-                    showDuration: Duration(seconds: 2),
-                    waitDuration: Duration(seconds: 1),
-                    child: Text('Tooltip 테스트'),
+                    child: const Text('클릭 테스트'),
                   ),
-                )
+                ),
+                const SizedBox(height: 20,),
+
+                // 자식의 고유 높이에 맞게 자식 크기를 조정하는 위젯
+                IntrinsicHeight(
+                  child: Container(
+                    height: 200,
+                    color: Colors.black,
+                  ),
+                ),
+                // 자식의 최대 고유 너비에 맞게 자식 크기를 조정하는 위젯
+                IntrinsicWidth(
+                  child: Container(
+                    width: 200,
+                    height: 100,
+                    color: Colors.amber,
+                  ),
+                ),
               ],
             ),
           ),

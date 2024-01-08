@@ -11,6 +11,9 @@ class ImageDetails extends StatelessWidget {
       title: '이미지 상세',
       topIcon: [],
       children: [
+        // 참고사이트
+        // https://black-glasses.tistory.com/entry/Flutter-%ED%94%8C%EB%9F%AC%ED%84%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80-%ED%99%95%EB%8C%80%ED%95%98%EA%B8%B0-InteractiveViewer%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%98%EC%9E%90
+        // 이미지를 확대 축소 할때 사용하는 위젯
         InteractiveViewer(child: Image.asset('assets/images/pizza.png')),
       ],
     );

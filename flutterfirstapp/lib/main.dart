@@ -10,7 +10,9 @@ void main() {
   FlutterNativeSplash.remove();
   runApp(
      DevicePreview(
-      enabled: !kReleaseMode,
+       // 디버그 모드 kDebugMode
+       // 릴리스 모드 kReleaseMode
+      enabled: !kDebugMode,
       builder: (BuildContext context) => const SelectHome(),
     ),
   );
