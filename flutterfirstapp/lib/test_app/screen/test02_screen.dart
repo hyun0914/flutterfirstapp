@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'widget/shake_icon.dart';
+
 // 위젯 화면 fill로 하는법
 // Row 위젯으로 감싼 후 child 위젯을 Expanded 위젯으로 감싼다
 // Column 위젯으로 감싼 후 crossAxisAlignment: CrossAxisAlignment.stretch를 준다.
@@ -58,6 +60,22 @@ class Test02Screen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                const ShakeIcon(
+                  shakeMode: ShakeEnum.awhile,
+                  shakeWidth: 3,
+                  duration: 1000,
+                  child: Icon(Icons.access_alarms),
+                ),
+
+                // 아이콘 버튼 클릭시 나오는 효과 없애기
+                IconButton(
+                  highlightColor: Colors.transparent,
+                  onPressed: (){
+                    debugPrint('클릭 됨');
+                  },
+                  icon: const Icon(Icons.add_circle)
+                ),
+
                 // 참고사이트 https://velog.io/@haram2/Tooltip-class
                 GestureDetector(
                   onTap: () => tooltipKey.currentState?.ensureTooltipVisible(),

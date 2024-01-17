@@ -13,6 +13,17 @@ class SelectHome extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
+      theme: ThemeData(
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: {
+            // ios 페이지 이동 애니메이션을 안드로이드에서 적용하는 법
+            // flutter cupertinopageroute
+            // 참고사이트 https://gigas-blog.tistory.com/284
+            TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+            TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+          }
+        )
+      ),
       home: const SelectHomeView(),
     );
   }
