@@ -50,6 +50,8 @@ dependencies:
   d_chart: ^2.6.3
   package_info_plus: ^5.0.1
   device_preview: ^1.1.0
+  snapping_sheet: ^3.1.0
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:

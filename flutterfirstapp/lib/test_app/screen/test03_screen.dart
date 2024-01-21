@@ -8,19 +8,21 @@ class Text03Screen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 오늘 날짜 가져오는 법
+    DateTime today = DateTime.now();
+    print(today);
     return Scaffold(
       body: SafeArea(
         child: Center(
           child: Container(
-            padding: const EdgeInsets.only(top: 10),
+            padding: const EdgeInsets.only(top: 30),
             child: Column(
               children: [
                 ElevatedButton(
                   onPressed: (){
-                    DateTime date1 = DateTime.now();
-                    DateTime date2 = date1.subtract(const Duration(days: 10));
-                    int result1 = date1.compareTo(date2);
-                    int result2 = date2.compareTo(date1);
+                    DateTime date2 = today.subtract(const Duration(days: 10));
+                    int result1 = today.compareTo(date2);
+                    int result2 = date2.compareTo(today);
                     // 앞일자면 -1을 뒤일자면 1을 반환한다.
                     // 참고사이트 https://in-coding.tistory.com/74
                     print(result1); // 1
@@ -30,7 +32,6 @@ class Text03Screen extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: (){
-                    DateTime today = DateTime.now();
                     Duration diff = today.difference(DateTime.parse('2023-06-30'));
                     Duration diff2 = DateTime.parse('2023-06-30').difference(today);
                     print ('diff ${diff.inDays}'); // 2024-01-17 기준 201
@@ -48,40 +49,36 @@ class Text03Screen extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: (){
-                    // 오늘 날짜 가져오는 법
-                    DateTime toDay = DateTime.now();
-                    print(toDay);
-
                     // 월 가져오기
-                    dynamic month = toDay.month;
+                    dynamic month = today.month;
                     print(month);
 
                     // 일 가져오기
-                    dynamic day = toDay.day;
+                    dynamic day = today.day;
                     print(day);
 
                     // 요일 가져오기
                     initializeDateFormatting();
-                    dynamic yoil = DateFormat('EEEE', 'ko_KR').format(toDay);
+                    dynamic yoil = DateFormat('EEEE', 'ko_KR').format(today);
                     print(yoil);
 
                     // 어제 날짜 구하는법
-                    DateTime yesterday = toDay.subtract(const Duration(days: 1));
+                    DateTime yesterday = today.subtract(const Duration(days: 1));
                     print(yesterday);
 
                     // 날짜 빼고 더하는 법
-                    DateTime dayM = DateTime(toDay.year, toDay.month, toDay.day-1);
+                    DateTime dayM = DateTime(today.year, today.month, today.day-1);
                     print(dayM);
 
-                    DateTime dayP = DateTime(toDay.year, toDay.month, toDay.day+1);
+                    DateTime dayP = DateTime(today.year, today.month, today.day+1);
                     print(dayP);
 
                     // 날짜 형식을 변환
                     String dateTimeFormat({String format = 'yyyy.MM.dd', required String dateTime}) {
                       return DateFormat(format).format(DateTime.parse(dateTime)).toString();
                     }
-                    String todayMonth1 = dateTimeFormat(format: 'yyyy.MM', dateTime: toDay.toString());
-                    String todayMonth2 = dateTimeFormat(format: 'yyyy-MM', dateTime: toDay.toString());
+                    String todayMonth1 = dateTimeFormat(format: 'yyyy.MM', dateTime: today.toString());
+                    String todayMonth2 = dateTimeFormat(format: 'yyyy-MM', dateTime: today.toString());
                     // 예시) 1 yyyy.MM  2 yyyy-MM 3  yyyy.MM.dd
                     print(todayMonth1);
                     print(todayMonth2);
@@ -91,7 +88,35 @@ class Text03Screen extends StatelessWidget {
                     // https://stackoverflow.com/questions/61682959/the-date-of-yesterday-in-flutter
                   },
                   child: const Text('날짜 관련 코드')
-                )
+                ),
+                ElevatedButton(
+                  onPressed: (){
+                    // weekday > 1~7의 해당 날짜 요일의 날짜 값을 가져올 수 있다.(1 == 월, ~ 7 == 일 )
+                    DateTime monDay = today.subtract(Duration(days: today.weekday - 1));
+                    DateTime sunDay = today.subtract(Duration(days: today.weekday - 7));
+                    print(monDay);
+                    print(sunDay);
+
+                    // 월요일 부터 일요일 까지 날짜 가져오기
+                    for(int i=0; i<7; i++) {
+                      DateTime date = today.subtract(Duration(days: today.weekday -1 -i));
+                      print(DateFormat('yyyy-MM-dd').format(date));
+                    }
+
+                    // 첫날, 마지막 날 값 가져오기
+                    String firstDay = DateFormat('yy.MM.dd').format(DateTime(today.year, today.month, 1));
+                    // 다음 달 0일로 설정 하면 이번 달의 마지막 날 값을 가쟈온다.
+                    String lastDay = DateFormat('yy.MM.dd').format(DateTime(today.year, today.month + 1, 0));
+                    String lastDayDay = DateFormat('dd').format(DateTime(today.year, today.month + 1, 0));
+                    print(firstDay);
+                    print(lastDay);
+                    print(lastDayDay);
+
+                    // 참고사이트
+                    // https://cyj893.github.io/flutter/Flutter4_2
+                  },
+                  child: const Text('날짜 관련 코드2')
+                ),
               ],
             ),
           ),

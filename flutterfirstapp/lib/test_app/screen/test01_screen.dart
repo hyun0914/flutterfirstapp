@@ -9,10 +9,13 @@ import 'dart:math' as math;
 
 import 'package:intl/intl.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 // 참고사이트 https://velog.io/@tmdgks2222/Flutter-intl
 // '###,###,###', '###,###' 결과 값은 같다
 var price = NumberFormat('###,###,###');
+PageController controller = PageController();
 
 class Test01Screen extends StatelessWidget {
   const Test01Screen({super.key});
@@ -31,6 +34,44 @@ class Test01Screen extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () => packageInfoGet(),
                     child: const Text('package_info_plus  테스트')
+                  ),
+                ),
+
+                Container(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: SmoothPageIndicator(
+                    controller: controller,
+                    count: 4,
+                    axisDirection: Axis.horizontal, // 방향 설정 (vertical || horizontal)
+                    effect: const SlideEffect(
+                      spacing: 8.0, // 점 사이의 수평 공간
+                      radius: 16.0, // 한개의 도트 반경
+                      dotWidth: 20.0, // 도트 폭
+                      dotHeight: 20.0, // 도트 높이
+                      dotColor: Colors.grey, // 비활성 도트 색상
+                      activeDotColor: Colors.indigo, // 활성 도트 색상
+                      paintStyle: PaintingStyle.stroke, // 비활성 도트 페인트 스타일 (fill|stroke)
+                      strokeWidth: 1.5, // PaintStyle.fill인 경우 이는 무시
+                    ),
+                  ),
+                ),
+
+                //
+                SizedBox(
+                  width: 200.0,
+                  height: 100.0,
+                  child: Shimmer.fromColors(
+                    baseColor: Colors.green,
+                    highlightColor: Colors.amberAccent,
+                    child: const Text(
+                      '로딩 중',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 40.0,
+                        fontWeight:
+                        FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
 

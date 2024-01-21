@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'widget/progress_indicator_view.dart';
 import 'widget/shake_icon.dart';
 
 // 위젯 화면 fill로 하는법
@@ -20,6 +21,8 @@ import 'widget/shake_icon.dart';
 
 // 참고사이트 https://sikk.tistory.com/19
 final textController = TextEditingController(text: '초기값텍스트');
+
+Offset offset = Offset.zero;
 
 class Test02Screen extends StatelessWidget {
   const Test02Screen({super.key});
@@ -66,6 +69,8 @@ class Test02Screen extends StatelessWidget {
                   duration: 1000,
                   child: Icon(Icons.access_alarms),
                 ),
+
+                const ProgressIndicatorView(),
 
                 // 아이콘 버튼 클릭시 나오는 효과 없애기
                 IconButton(
@@ -122,14 +127,8 @@ class Test02Screen extends StatelessWidget {
                 // bottomCenter
                 // bottomRight
                 // 참고사이트 https://naman-develop.tistory.com/8
-                const Align(alignment: Alignment.topLeft, child: Text('중앙 정렬')),
+                const Align(alignment: Alignment.center, child: Text('중앙 정렬')),
 
-                // 그림자 설정
-                // color 그림자 색상
-                // blurRadius 그림자 효과를 선명도(0일 수록 그림자선이 선명해진다)
-                // spreadRadius 그림자효과의 반경 설정(값이 높을 수록 넓어진다)
-                // offset x,y의 offset값으로 x 값이 커질수록 오른쪽으로 y값이 커질수록 아래로 이동하여 표시된다
-                // 참고사이트 https://gloria94.tistory.com/44
                 Container(
                   padding: EdgeInsets.only(bottom: 20),
                   child: Row(
@@ -141,6 +140,12 @@ class Test02Screen extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: const BorderRadius.all(Radius.circular(12)),
                           boxShadow: [
+                            // 그림자 설정
+                            // color 그림자 색상
+                            // blurRadius 그림자 효과를 선명도(0일 수록 그림자선이 선명해진다)
+                            // spreadRadius 그림자효과의 반경 설정(값이 높을 수록 넓어진다)
+                            // offset x,y의 offset값으로 x 값이 커질수록 오른쪽으로 y값이 커질수록 아래로 이동하여 표시된다
+                            // 참고사이트 https://gloria94.tistory.com/44
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.08),
                               spreadRadius: 0,
@@ -148,6 +153,9 @@ class Test02Screen extends StatelessWidget {
                               offset: const Offset(0, 4),
                             )
                           ],
+                          // gradient 종류
+                          // LinearGradient, RadialGradient, SweepGradient
+                          // 참고사이트 https://dulki.tistory.com/308
                           gradient: const LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
@@ -186,7 +194,132 @@ class Test02Screen extends StatelessWidget {
                   ),
                 ),
 
+                SizedBox(
+                  height: 300,
+                  child: StatefulBuilder(
+                    builder: (BuildContext context, void Function(void Function()) setState) {
+                      return Container(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Expanded(
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      padding: const EdgeInsets.all(50.0),
+                                      child: AnimatedSlide(
+                                        offset: offset,
+                                        duration: const Duration(milliseconds: 500),
+                                        curve: Curves.easeInOut,
+                                        child: const FlutterLogo(size: 50.0),
+                                      ),
+                                    ),
+                                  ),
+                                  Column(
+                                    children: [
+                                      Text('Y'),
+                                      Expanded(
+                                        child: RotatedBox(
+                                          quarterTurns: 1,
+                                          child: Slider(
+                                            min: -5.0,
+                                            max: 5.0,
+                                            value: offset.dy,
+                                            onChanged: (double value) {
+                                              setState(() {
+                                                offset = Offset(offset.dx, value);
+                                              });
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                const Text('X'),
+                                Expanded(
+                                  child: Slider(
+                                    min: -5.0,
+                                    max: 5.0,
+                                    value: offset.dx,
+                                    onChanged: (double value) {
+                                      setState(() {
+                                        offset = Offset(value, offset.dy);
+                                      });
+                                    },
+                                  ),
+                                ),
+                                const SizedBox(width: 48.0),
+                              ],
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+
                 Image.asset('assets/images/icicles1280.jpg', width: 200, height: 170,),
+
+                // flutter container background image 참고사이트
+                // https://sleepy-it.tistory.com/21
+                // https://blog.terry1213.com/flutter/flutter-how-to-set-background-image
+                // https://www.flutterbeads.com/set-background-image-in-flutter/
+                Container(
+                  width: 200,
+                  height: 170,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      // 네트워크 이미지
+                      // image: DecorationImage(image: NetworkImage('')),
+                      // 참고사이트
+                      // https://stackoverflow.com/questions/50877388/flutter-use-networkimage-as-background
+                      image: AssetImage('assets/images/icicles1280.jpg'),
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  child: const Text('이미지 배경', style: TextStyle(fontSize: 20, color: Colors.black),),
+                ),
+                const SizedBox(height: 20,),
+
+                // 구분선 위젯
+                // 참고사이트 https://devuryu.tistory.com/372
+                const Divider(thickness: 1, height: 1, color: Colors.green,),
+                const SizedBox(height: 10,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 100,
+                      height: 200,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.deepPurpleAccent,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 200, // 높이값을 지정해야함
+                      child: VerticalDivider(thickness: 1, width: 4, indent: 20, endIndent: 0, color: Colors.green,)
+                    ),
+                    Container(
+                      width: 100,
+                      height: 200,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.deepOrangeAccent,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 30,),
 
                 // ExpansionTile 위젯을 펼쳤을 때 위아래에 줄이 있다.
                 // Theme(

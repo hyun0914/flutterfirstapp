@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'screen/test01_screen.dart';
 import 'screen/test02_screen.dart';
 import 'screen/test03_screen.dart';
+import 'screen/test04_screen.dart';
+import 'screen/test05_screen.dart';
 
 class SelectTest extends StatelessWidget {
   const SelectTest({super.key});
@@ -30,6 +32,16 @@ class SelectTest extends StatelessWidget {
                   context: context,
                   onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const Text03Screen())),
                   testTile: '테스트03'
+                ),
+                textPushBtn(
+                  context: context,
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const Test04Screen())),
+                  testTile: '테스트04'
+                ),
+                textPushBtn(
+                  context: context,
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const Test05Screen())),
+                  testTile: '테스트05'
                 ),
               ],
             ),
