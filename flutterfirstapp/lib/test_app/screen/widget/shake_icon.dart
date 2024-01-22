@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-// 참고사이트 https://m.blog.naver.com/yhyn37/221952097496
+// 참고사이트 flutter animated 좌우 움직임
+// https://m.blog.naver.com/yhyn37/221952097496
 enum ShakeEnum { repeat, awhile, unwavering, }
 
 class ShakeIcon extends StatefulWidget {

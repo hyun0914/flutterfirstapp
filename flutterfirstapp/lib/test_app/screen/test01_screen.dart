@@ -1,10 +1,14 @@
+import 'dart:io';
+
 import 'package:adaptive_action_sheet/adaptive_action_sheet.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:d_chart/d_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:image_picker/image_picker.dart';
 import 'dart:math' as math;
 
 import 'package:intl/intl.dart';
@@ -16,6 +20,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 // '###,###,###', '###,###' 결과 값은 같다
 var price = NumberFormat('###,###,###');
 PageController controller = PageController();
+PickedFile? _imageFile;
 
 class Test01Screen extends StatelessWidget {
   const Test01Screen({super.key});
@@ -74,6 +79,17 @@ class Test01Screen extends StatelessWidget {
                     ),
                   ),
                 ),
+
+                selectPhoto(source: ImageSource.gallery),
+
+                CachedNetworkImage(
+                  imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzI7_cvbc0a3ZzlMeePRzmvU8ePhiC6SlRhw&usqp=CAU",
+                  // 로딩되는 동안 표시되는 위젯
+                  placeholder: (context, url) => const CircularProgressIndicator(),
+                  // 에러일때 표시되는 위젯
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                ),
+                const SizedBox(height: 20,),
 
                 Container(
                   color: Colors.white,
@@ -257,4 +273,146 @@ Future<List<String?>> packageInfoGet() async {
   showToast(msg: getPackageInfo.toString());
   print(getPackageInfo);
   return getPackageInfo;
+}
+
+List<String> imageName = [];
+XFile? imageFile;
+final ImagePicker picker = ImagePicker();
+
+Future<bool> imgName(setState, ImageSource source) async {
+  final pickedFile  = await picker.pickImage(source: source, imageQuality: 99, maxWidth: 2000, maxHeight: 2000,);
+  if(pickedFile != null) {
+    setState((){
+      imageFile = pickedFile;
+    });
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+Widget selectPhoto({
+  required ImageSource source,
+}) {
+  return StatefulBuilder(
+    builder: (BuildContext context, setState) {
+      return GestureDetector(
+        onTap: ()  {
+          imageEditSheet(contexts: context, source: source, setState: setState);
+        },
+        child: companyImg(
+          imgFile: 'https://i.pinimg.com/736x/26/ef/03/26ef03ec8c0751b4edc938fc8f7b634e.jpg',
+          radius: 35,
+          profileBasics: 'hamburger.png'
+        ),
+      );
+    },
+  );
+}
+
+Future imageEditSheet({
+  required BuildContext contexts,
+  required ImageSource source,
+  required Function(void Function()) setState,
+}) {
+  return showModalBottomSheet(
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+    context: contexts,
+    builder: (context) {
+      return Wrap(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width,
+            padding: const EdgeInsets.only(top: 14, bottom: 24),
+            child: Column(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    imgName(setState, source).then((value) {
+                      if(value == true) {
+                        print(imageFile!.path);
+                        imageName.add(imageFile!.path);
+                        Navigator.of(context).pop();
+                      }
+                    });
+                  },
+                  child: Container(
+                      color: Colors.transparent,
+                      padding: EdgeInsets.only(bottom: 14),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.image),
+                          SizedBox(width: 12),
+                          Text('사진 선택'),
+                        ],
+                      )
+                  ),
+                ),
+                GestureDetector(
+                  onTap: (){
+                    Navigator.of(context).pop();
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: const EdgeInsets.only(top: 14, bottom: 14),
+                    decoration: const BoxDecoration(
+                        color: Colors.transparent,
+                        border: Border(
+                          top: BorderSide(color: Color.fromRGBO(219, 219, 219, 1)),
+                          bottom :BorderSide(color: Color.fromRGBO(219, 219, 219, 1)),
+                        )
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.camera_alt),
+                        SizedBox(width: 12,),
+                        Text('사진 삭제'),
+                      ],
+                    )
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () => Navigator.of(context).pop(),
+                  child: Container(
+                    color: Colors.transparent,
+                    padding: EdgeInsets.only(top: 14),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('닫기'),
+                      ],
+                    )
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      );
+    }
+  );
+}
+
+Widget companyImg({
+  required String imgFile,
+  required double radius,
+  required String profileBasics,
+}) {
+  if(imgFile == '') {
+    return CircleAvatar(
+      radius: radius,
+      backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
+      backgroundImage: AssetImage('assets/images/$profileBasics',),
+      //backgroundImage: NetworkImage(),
+    );
+  }
+  return CachedNetworkImage(
+    imageUrl: imgFile,
+    imageBuilder: (context, imageProvider) => CircleAvatar(radius: radius, backgroundImage: imageProvider,),
+    placeholder: (context, url) => CircleAvatar(radius: radius,),
+    errorWidget: (context, url, error) => Image.asset('assets/images/$profileBasics',),
+  );
 }

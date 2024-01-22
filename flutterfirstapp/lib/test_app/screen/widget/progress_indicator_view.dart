@@ -19,12 +19,14 @@ class _ProgressIndicatorViewState extends State<ProgressIndicatorView> with Tick
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 10),
-    )..addListener(() {
-      setState(() {});
-    });
+    if(mounted) {
+      controller = AnimationController(
+        vsync: this,
+        duration: const Duration(seconds: 10),
+      )..addListener(() {
+        setState(() {});
+      });
+    }
 
     colorTween = controller.drive(ColorTween(begin: Colors.green, end: Colors.teal));
     controller.forward();
@@ -32,8 +34,8 @@ class _ProgressIndicatorViewState extends State<ProgressIndicatorView> with Tick
 
   @override
   void dispose() {
-    super.dispose();
     controller.dispose();
+    super.dispose();
   }
 
   @override

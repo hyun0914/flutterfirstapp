@@ -52,6 +52,7 @@ dependencies:
   device_preview: ^1.1.0
   snapping_sheet: ^3.1.0
   shimmer: ^3.0.0
+  cached_network_image: ^3.3.1
 
 dev_dependencies:
   flutter_test:

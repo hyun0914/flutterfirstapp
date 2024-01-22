@@ -5,6 +5,7 @@ import 'screen/test02_screen.dart';
 import 'screen/test03_screen.dart';
 import 'screen/test04_screen.dart';
 import 'screen/test05_screen.dart';
+import 'screen/widget/hero_test_view.dart';
 
 class SelectTest extends StatelessWidget {
   const SelectTest({super.key});
@@ -18,6 +19,11 @@ class SelectTest extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                textPushBtn(
+                  context: context,
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const HeroTestView())),
+                  testTile: 'Hero 테스트'
+                ),
                 textPushBtn(
                   context: context,
                   onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const Test01Screen())),

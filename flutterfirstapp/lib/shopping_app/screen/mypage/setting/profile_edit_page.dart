@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -7,6 +6,8 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../layout/simple_bar_layout.dart';
 
+// 참고사이트
+// https://kyungsnim.net/126
 
 class ProfileEditPage extends StatefulWidget {
   const ProfileEditPage({Key? key}) : super(key: key);
@@ -49,14 +50,14 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
               SizedBox(height: 20,),
               Padding(
                 padding: const EdgeInsets.only(left: 10),
-                child: Text('현재닉네임: ' + show_name, style: TextStyle(fontSize: 17),),
+                child: Text('현재닉네임: $show_name', style: TextStyle(fontSize: 17),),
               ),
               SizedBox(height: 20,),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: NameText(),
+                child: nameText(),
               ),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Container(
@@ -72,7 +73,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                         showToatst('사용중인 닉네임 입니다.');
                       }
                     },
-                    child: Text('변경하기'),
+                    child: const Text('변경하기'),
                   ),
                 ),
               ),
@@ -89,32 +90,32 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
         children: [
           CircleAvatar(
             radius: 80,
-            backgroundImage: _imageFile == null ? const AssetImage('assets/image/Flowerpot.jpg') : FileImage((File(_imageFile!.path))) as ImageProvider,
+            backgroundImage: _imageFile == null ? const AssetImage('assets/images/chicken.jpg') : FileImage((File(_imageFile!.path))) as ImageProvider,
           ),
           Positioned(
-              bottom: 10,
-              right: 10,
-              child: InkWell(
-                onTap: (){
-                  // showModalBottomSheet(context: context,  builder: (builder) => bottomsheet());
-                  takePhoto(ImageSource.gallery);
-                },
-                child: Icon(
-                  Icons.camera_alt,
-                  color: Colors.black.withOpacity(0),
-                  size: 140,
-                ),
-              )
+            bottom: 10,
+            right: 10,
+            child: InkWell(
+              onTap: (){
+                // showModalBottomSheet(context: context,  builder: (builder) => bottomsheet());
+                takePhoto(ImageSource.gallery);
+              },
+              child: Icon(
+                Icons.camera_alt,
+                color: Colors.black.withOpacity(0),
+                size: 140,
+              ),
+            )
           )
         ],
       ),
     );
   }
 
-  Widget NameText(){
+  Widget nameText(){
     return TextFormField(
       controller: _namecontroller,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         border: OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.black,
@@ -134,37 +135,6 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
       ),
     );
   }
-
-  // Widget bottomsheet(){
-  //   return Container(
-  //     height: 100,
-  //     width: MediaQuery.of(context).size.width,
-  //     margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-  //     child: Column(
-  //       children: [
-  //         Text('프로필 이미지 변경', style: TextStyle(fontSize: 20),),
-  //         SizedBox(height: 20,),
-  //         Row(
-  //           mainAxisAlignment: MainAxisAlignment.spaceAround,
-  //           children: [
-  //             IconButton(
-  //               onPressed: (){
-  //                 takePhoto(ImageSource.camera);
-  //               },
-  //               icon: Icon(Icons.camera, size: 50,),
-  //             ),
-  //             IconButton(
-  //               onPressed: (){
-  //                 takePhoto(ImageSource.gallery);
-  //               },
-  //               icon: Icon(Icons.photo, size: 50,),
-  //             ),
-  //           ],
-  //         )
-  //       ],
-  //     ),
-  //   );
-  // }
 
   takePhoto(ImageSource source) async{
     final pickedFile  = await _picker.pickImage(source: source, imageQuality: 99, maxWidth: 2000, maxHeight: 2000,);
