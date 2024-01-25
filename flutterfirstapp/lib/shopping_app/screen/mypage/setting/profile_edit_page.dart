@@ -69,7 +69,8 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                       if(checkName == 'false'){
                         showToatst('닉네임 변경완료.');
                         Navigator.pop(context);
-                      }else if(checkName == 'true'){
+                      }
+                      else if(checkName == 'true'){
                         showToatst('사용중인 닉네임 입니다.');
                       }
                     },

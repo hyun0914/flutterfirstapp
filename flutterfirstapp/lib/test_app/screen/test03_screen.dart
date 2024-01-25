@@ -114,6 +114,47 @@ class Text03Screen extends StatelessWidget {
 
                     // 참고사이트
                     // https://cyj893.github.io/flutter/Flutter4_2
+
+                    // 오늘부터 이전 달의 31개의 날짜 데이터 가져오기
+                    List<dynamic> selectedMonthInfo = [];
+
+                    String zeroMonth = '${today.month}';
+                    String dayText;
+                    if(today.month < 10) {
+                      zeroMonth = '0${today.month}';
+                    }
+
+                    DateTime previousDate = DateTime(today.year, today.month).subtract(const Duration(days: 1));
+                    int previousYear =  previousDate.year;
+                    int previousMonth =  previousDate.month;
+                    String previousMonthText = '$previousMonth';
+                    if(previousMonth < 10) {
+                      previousMonthText = '0$previousMonth';
+                    }
+                    String previousDayText;
+
+                    var previousLastDay = DateFormat('dd').format(DateTime(today.year, int.parse(previousMonthText) + 1, 0));
+
+                    int forStartDay = previousDate.day - (31 -today.day);
+                    print('$forStartDay');
+
+                    for (int i=forStartDay; i<=int.parse(previousLastDay); i++) {
+                      previousDayText = '$i';
+                      if(i < 10) {
+                        previousDayText = '0$i';
+                      }
+                      selectedMonthInfo.add('$previousYear.$previousMonthText.$previousDayText');
+                    }
+
+                    for (int i=1; i<=today.day; i++) {
+                      dayText = '$i';
+                      if(i < 10) {
+                        dayText = '0$i';
+                      }
+                      selectedMonthInfo.add('${today.year}.$zeroMonth.$dayText');
+                      //isCheckDay.add(false);
+                    }
+                    print(selectedMonthInfo);
                   },
                   child: const Text('날짜 관련 코드2')
                 ),
