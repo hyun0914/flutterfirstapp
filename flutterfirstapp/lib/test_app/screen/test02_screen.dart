@@ -116,6 +116,26 @@ class Test02Screen extends StatelessWidget {
                   ),
                 ),
 
+                // 참고사이트 expansiontile flutter line delete
+                // https://stackoverflow.com/questions/64123839/flutter-remove-border-expansion-tile
+                Theme(
+                  data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+                  child: const ExpansionTile(
+                    initiallyExpanded: false,
+                    tilePadding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                    childrenPadding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                    collapsedBackgroundColor: Colors.green,
+                    backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+                    collapsedIconColor: Color.fromRGBO(51, 51, 51, 1),
+                    iconColor: Color.fromRGBO(51, 51, 51, 1),
+                    title: Text('텍스트 ...'),
+                    children: [
+                      Text('텍스트........')
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20,),
+
                 // 정렬 종류
                 // topLeft
                 // topCenter
@@ -220,7 +240,7 @@ class Test02Screen extends StatelessWidget {
                                   ),
                                   Column(
                                     children: [
-                                      Text('Y'),
+                                      const Text('Y'),
                                       Expanded(
                                         child: RotatedBox(
                                           quarterTurns: 1,
@@ -476,6 +496,59 @@ class Test02Screen extends StatelessWidget {
                     width: 200,
                     height: 100,
                     color: Colors.amber,
+                  ),
+                ),
+                const SizedBox(height: 10,),
+
+                // 모서리 둥글게 처라
+                // 참고사이트
+                // https://yun-seyeong.tistory.com/19
+                // https://velog.io/@sharveka_11/ClipRRect
+                // https://muhly.tistory.com/15
+                // 18분 8초
+                // https://www.youtube.com/watch?v=DgKhGuI-q7g&list=PLfT5BC1zbOTtJGhpUH4EuxiqVr-yMYsMw&index=7
+                Container(
+                  width: 140,
+                  height: 70,
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(7),
+                  ),
+                ),
+                const SizedBox(height: 10,),
+
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(7),
+                  child:  Image.asset('assets/images/icicles1280.jpg', width: 140, height: 70, fit: BoxFit.cover,),
+                ),
+                const SizedBox(height: 10,),
+
+                ClipOval(
+                  child: SizedBox(
+                    width: 170,
+                    height: 70,
+                    child:  Image.asset('assets/images/icicles1280.jpg', width: 140, height: 70, fit: BoxFit.fill,),
+                  ),
+                ),
+                const SizedBox(height: 10,),
+
+                SizedBox(
+                  width: 300,
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 50,
+                        height: 50,
+                        color: Colors.black,
+                      ),
+                      // 참고사이트 https://velog.io/@sharveka_11/Spacer
+                      const Spacer(),
+                      Container(
+                        width: 50,
+                        height: 50,
+                        color: Colors.black,
+                      ),
+                    ],
                   ),
                 ),
               ],
