@@ -167,6 +167,13 @@ class Test01Screen extends StatelessWidget {
                         flex: 1,
                         child: SizedBox(
                           height: 10,
+                          // 좌우 반전 - flutter 위젯 좌우 반전
+                          // import 'dart:math' as math;
+                          // double degrees = 180;
+                          // double radians = degrees * math.pi / 180;
+                          // 참고사이트
+                          // https://happyguy81.tistory.com/145
+                          // https://stcodelab.com/entry/Flutter-%EC%9C%84%EC%A0%AF-%ED%9A%8C%EC%A0%84-RotatedBox-Transformrotate-AnimatedBuilder
                           child: Transform.rotate(
                             angle: 180 * math.pi / 180,
                             child: const DChartSingleBar(
@@ -200,6 +207,41 @@ class Test01Screen extends StatelessWidget {
                       ),
                     ],
                   ),
+                ),
+
+                // 참고사이트 https://velog.io/@flxh4894/Flutter-Widget-%EC%A2%8C%EC%9A%B0-%EB%B0%98%EC%A0%84
+                Column(
+                  children: [
+                    Transform(
+                      alignment: Alignment.center,
+                      transform: Matrix4.rotationY(math.pi), // 좌우 반전
+                      child: Row(
+                        children: [
+                          Container(
+                            color: Colors.yellow,
+                            width: 50,
+                            height: 50,
+                          ),
+                          Container(
+                            color: Colors.grey,
+                            width: 50,
+                            height: 50,
+                            child: const Text('반전', style: TextStyle(fontSize: 18),),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Transform(
+                      alignment: Alignment.center,
+                      transform: Matrix4.rotationX(math.pi), // 상하 반전
+                      child: Container(
+                        color: Colors.yellow,
+                        width: 50,
+                        height: 50,
+                        child: const Text('반전', style: TextStyle(fontSize: 18),),
+                      ),
+                    ),
+                  ],
                 ),
 
                 FlutterCarousel(

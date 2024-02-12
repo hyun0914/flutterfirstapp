@@ -24,7 +24,16 @@ class SelectHome extends StatelessWidget {
           }
         )
       ),
-      home: const SelectHomeView(),
+      home: MediaQuery(
+        // 주어진 글꼴 크기에 곱하여 들어오는 글꼴 크기를 조정하는 비례 TextScaler를textScaleFactor
+        // MediaQuery.of(context).copyWith(textScaleFactor: 1.0), 에서
+        // MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(0.8)), 으로 변경됨 (3.16)
+        // TextScaler.linear(1.0) == TextScaler.noScaling 이다.
+        // textScaleFactor
+        // 참고사이트 https://jutole.tistory.com/112?category=570267
+        data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),
+        child: const SelectHomeView()
+      ),
     );
   }
 }

@@ -15,7 +15,16 @@ class Test05Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      appBar: AppBar(),
+      appBar: AppBar(
+        // centerTitle
+        // true - 중앙 정렬
+        // false - 왼쪽 정렬
+        // ios 기본설정이 중앙정렬, aos 기본설정이 왼쪽정렬
+        // 참고사이트
+        // https://islet4you.tistory.com/entry/Flutter-AppBar-title-center-%EB%A1%9C-%EB%A7%9E%EC%B6%B0%EC%A3%BC%EA%B8%B0
+        centerTitle: true,
+        title: Text('test05'),
+      ),
       endDrawer: const Drawer(),
       body: SafeArea(
         child: GestureDetector(

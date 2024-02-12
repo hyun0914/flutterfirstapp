@@ -5,6 +5,7 @@ import 'screen/test02_screen.dart';
 import 'screen/test03_screen.dart';
 import 'screen/test04_screen.dart';
 import 'screen/test05_screen.dart';
+import 'screen/test06_screen.dart';
 import 'screen/widget/hero_test_view.dart';
 
 class SelectTest extends StatelessWidget {
@@ -48,6 +49,11 @@ class SelectTest extends StatelessWidget {
                   context: context,
                   onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const Test05Screen())),
                   testTile: '테스트05'
+                ),
+                textPushBtn(
+                  context: context,
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const Test06Screen())),
+                  testTile: '테스트06'
                 ),
               ],
             ),
