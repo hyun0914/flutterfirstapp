@@ -5,13 +5,17 @@ class Test04FirstView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 앱 실행시 showModalBottomSheet 호출 하는 법
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      _showBottomSheet(context);
+    });
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
       child: Column(
         children: [
           ElevatedButton(
             onPressed: () => showSheet(context),
-            child: Text('showModalBottomSheet')
+            child: const Text('showModalBottomSheet')
           ),
         ],
       ),
@@ -40,6 +44,7 @@ class Test04FirstView extends StatelessWidget {
 Future showSheet(BuildContext context) {
   return showModalBottomSheet(
     context: context,
+    enableDrag: true, // false 설정 시 showModalBottomSheet를 드래그해서 닫기 비활성화됨
     isScrollControlled: false, // bottomSheet의 높이를 full로 설정 여부 (기본 false)
     isDismissible: true, // showModalBottomSheet 외 영역 클릭시 닫히지 않게 설정 여부
     // 모서리 둥글게 하기
@@ -69,5 +74,43 @@ Future showSheet(BuildContext context) {
         ),
       );
     }
+  );
+}
+
+void _showBottomSheet(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    enableDrag: false,
+    isDismissible: false,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(16))
+    ),
+    builder: (BuildContext context) {
+      return Container(
+        height: 230,
+        decoration: const BoxDecoration(
+          color: Color(0xFFF0F0F0),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(16))
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(16))
+                ),
+              ),
+            ),
+            Row(
+              children: [
+                Expanded(child: ElevatedButton(onPressed: () => Navigator.of(context).pop(), child: const Text('닫기'))),
+                Expanded(child: ElevatedButton(onPressed: () => Navigator.of(context).pop(), child: const Text('닫기'))),
+              ],
+            )
+          ],
+        ),
+      );
+    },
   );
 }

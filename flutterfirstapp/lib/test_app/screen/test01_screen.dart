@@ -31,6 +31,8 @@ class Test01Screen extends StatelessWidget {
       body: Container(
         color: const Color.fromRGBO(1, 98, 65, 1),
         child: SafeArea(
+          // 화면크기에 맞게 또는 넘어가기 내용물이 없으면 중앙 정렬? 처럼 되셔 위에 간격이 생긴다.
+          // 해결법은 Column => Expanded => singlechildscrollview 으로 하면 해결
           child: SingleChildScrollView(
             child: Column(
               children: [

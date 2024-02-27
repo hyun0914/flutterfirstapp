@@ -1,6 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
+import 'oss_licenses/oss_licenses_page.dart';
 import 'shopping_app/screen/main_page.dart';
 import 'test_app/select_test.dart';
 
@@ -60,6 +61,12 @@ class SelectHomeView extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SelectTest())),
                   child: const Text('테스트앱화면')
+                ),
+              ),
+              Center(
+                child: ElevatedButton(
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const OssLicensesPage())),
+                  child: const Text('오픈소스 라이센스')
                 ),
               ),
             ],
