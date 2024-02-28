@@ -44,6 +44,8 @@ class Test04FirstView extends StatelessWidget {
 Future showSheet(BuildContext context) {
   return showModalBottomSheet(
     context: context,
+    barrierColor: Colors.greenAccent, // showModalBottomSheet 외의 영역 색상
+    backgroundColor: Colors.green, // showModalBottomSheet 배경색상
     enableDrag: true, // false 설정 시 showModalBottomSheet를 드래그해서 닫기 비활성화됨
     isScrollControlled: false, // bottomSheet의 높이를 full로 설정 여부 (기본 false)
     isDismissible: true, // showModalBottomSheet 외 영역 클릭시 닫히지 않게 설정 여부

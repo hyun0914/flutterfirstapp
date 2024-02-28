@@ -298,10 +298,14 @@ class Test02Screen extends StatelessWidget {
                   height: 170,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      // 네트워크 이미지
+                      // container background image network(네트워크)
                       // image: DecorationImage(image: NetworkImage('')),
                       // 참고사이트
                       // https://stackoverflow.com/questions/50877388/flutter-use-networkimage-as-background
+                      // container background image memory(base64)
+                      // image: DecorationImage(image: MemoryImage()),
+                      // 참고사이트
+                      // https://stackoverflow.com/questions/68858165/how-to-use-a-picked-image-as-background-image-in-flutter
                       image: AssetImage('assets/images/icicles1280.jpg'),
                       fit: BoxFit.fill,
                     ),

@@ -36,7 +36,7 @@ class Test05Screen extends StatelessWidget {
             print(scaffoldKey.currentState!.isEndDrawerOpen);
           },
           child: Container(
-            child: Center(
+            child: const Center(
               child: Text('Drawer 열기'),
             ),
           )

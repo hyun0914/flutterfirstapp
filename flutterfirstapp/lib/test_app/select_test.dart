@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'screen/boxfit_test_screen.dart';
 import 'screen/test01_screen.dart';
 import 'screen/test02_screen.dart';
 import 'screen/test03_screen.dart';
@@ -7,7 +8,7 @@ import 'screen/test04_screen.dart';
 import 'screen/test05_screen.dart';
 import 'screen/test06_screen.dart';
 import 'screen/test07_screen.dart';
-import 'screen/widget/hero_test_view.dart';
+import 'screen/hero_test_screen.dart';
 
 class SelectTest extends StatelessWidget {
   const SelectTest({super.key});
@@ -23,8 +24,13 @@ class SelectTest extends StatelessWidget {
               children: [
                 textPushBtn(
                   context: context,
-                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const HeroTestView())),
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const HeroTestScreen())),
                   testTile: 'Hero 테스트'
+                ),
+                textPushBtn(
+                  context: context,
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const BoxFitScreen())),
+                  testTile: 'Boxfilt 테스트'
                 ),
                 textPushBtn(
                   context: context,

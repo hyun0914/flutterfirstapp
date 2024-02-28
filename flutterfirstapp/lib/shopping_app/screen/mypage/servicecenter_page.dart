@@ -56,7 +56,8 @@ class ServiceCenterPage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 25),
                       child: ElevatedButton(
-                          onPressed: ()async{
+                          onPressed: () async{
+                            // 참고사이트 https://deku.posstree.com/ko/flutter/url_launcher/
                             final url = Uri.parse('tel:070 7620 3022');
                             if(await canLaunchUrl(url)){
                               launchUrl(url);

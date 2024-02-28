@@ -23,7 +23,7 @@ class Text03Screen extends StatelessWidget {
                     DateTime date2 = today.subtract(const Duration(days: 10));
                     int result1 = today.compareTo(date2);
                     int result2 = date2.compareTo(today);
-                    // 앞일자면 -1을 뒤일자면 1을 반환한다.
+                    // 앞일자면 -1을 뒤일자면 1을 반환한다. 같은날짜이면 0을 반환한다.
                     // 참고사이트 https://in-coding.tistory.com/74
                     print(result1); // 1
                     print(result2); // -1

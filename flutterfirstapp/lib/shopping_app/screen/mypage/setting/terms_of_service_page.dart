@@ -6,7 +6,7 @@ class TermsOfServicePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SimpleBarLayout(
+    return const SimpleBarLayout(
         title: '이용약관',
         topIcon: null,
         children: [
