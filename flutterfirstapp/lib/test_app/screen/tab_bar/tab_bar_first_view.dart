@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Test04FirstView extends StatelessWidget {
-  const Test04FirstView({super.key});
+class TabBarFirstView extends StatelessWidget {
+  const TabBarFirstView({super.key});
 
   @override
   Widget build(BuildContext context) {

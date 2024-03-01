@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'basic_header_delegate.dart';
+import '../widget/basic_header_delegate.dart';
 
 // 참고사이트
 // https://dalgoodori.tistory.com/62
 
-class Test04ThirdView extends StatelessWidget {
-  const Test04ThirdView({super.key});
+class TabBarThirdView extends StatelessWidget {
+  const TabBarThirdView({super.key});
 
   @override
   Widget build(BuildContext context) {

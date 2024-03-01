@@ -22,8 +22,8 @@ var price = NumberFormat('###,###,###');
 PageController controller = PageController();
 PickedFile? _imageFile;
 
-class Test01Screen extends StatelessWidget {
-  const Test01Screen({super.key});
+class PackageWidget01Screen extends StatelessWidget {
+  const PackageWidget01Screen({super.key});
 
   @override
   Widget build(BuildContext context) {

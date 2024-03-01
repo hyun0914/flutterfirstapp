@@ -24,8 +24,8 @@ final textController = TextEditingController(text: '초기값텍스트');
 
 Offset offset = Offset.zero;
 
-class Test02Screen extends StatelessWidget {
-  const Test02Screen({super.key});
+class DefaultWidget01Screen extends StatelessWidget {
+  const DefaultWidget01Screen({super.key});
 
   @override
   Widget build(BuildContext context) {

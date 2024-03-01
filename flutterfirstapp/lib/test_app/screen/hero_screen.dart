@@ -15,8 +15,8 @@ List<String> title = [
   'Yellow Box',
 ];
 
-class HeroTestScreen extends StatelessWidget {
-  const HeroTestScreen({super.key});
+class HeroScreen extends StatelessWidget {
+  const HeroScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

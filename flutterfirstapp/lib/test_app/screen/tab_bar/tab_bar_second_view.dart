@@ -6,8 +6,8 @@ import 'package:snapping_sheet/snapping_sheet.dart';
 
 SnappingSheetController snappingSheetController = SnappingSheetController();
 
-class Test04SecondView extends StatelessWidget {
-  const Test04SecondView({super.key});
+class TabBarSecondView extends StatelessWidget {
+  const TabBarSecondView({super.key});
 
   @override
   Widget build(BuildContext context) {

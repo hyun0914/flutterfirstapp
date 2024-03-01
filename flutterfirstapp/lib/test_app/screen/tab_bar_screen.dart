@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'widget/test04_first_view.dart';
-import 'widget/test04_second_view.dart';
-import 'widget/test04_third_view.dart';
+import 'tab_bar/tab_bar_first_view.dart';
+import 'tab_bar/tab_bar_second_view.dart';
+import 'tab_bar/tab_bar_third_view.dart';
 
 // TabBar 참고사이트
 // https://eunoia3jy.tistory.com/110
@@ -12,8 +12,8 @@ import 'widget/test04_third_view.dart';
 
 List<String> tabsText = ['첫번 째', '두번 째', '세번 째'];
 
-class Test04Screen extends StatelessWidget {
-  const Test04Screen({super.key});
+class TabBarScreen extends StatelessWidget {
+  const TabBarScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +35,9 @@ class Test04Screen extends StatelessWidget {
         body: const SafeArea(
           child: TabBarView(
             children: [
-              Test04FirstView(),
-              Test04SecondView(),
-              Test04ThirdView(),
+              TabBarFirstView(),
+              TabBarSecondView(),
+              TabBarThirdView(),
             ],
           ),
         ),

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import 'screen/boxfit_test_screen.dart';
-import 'screen/test01_screen.dart';
-import 'screen/test02_screen.dart';
-import 'screen/test03_screen.dart';
-import 'screen/test04_screen.dart';
-import 'screen/test05_screen.dart';
-import 'screen/test06_screen.dart';
-import 'screen/test07_screen.dart';
-import 'screen/hero_test_screen.dart';
+import 'screen/boxfit_screen.dart';
+import 'screen/package_widget01_screen.dart';
+import 'screen/default_widget01_screen.dart';
+import 'screen/date_related_screen.dart';
+import 'screen/tab_bar_screen.dart';
+import 'screen/scaffold_screen.dart';
+import 'screen/random_related_screen.dart';
+import 'screen/calendar_widget_screen.dart';
+import 'screen/hero_screen.dart';
 
 class SelectTest extends StatelessWidget {
   const SelectTest({super.key});
@@ -24,48 +24,48 @@ class SelectTest extends StatelessWidget {
               children: [
                 textPushBtn(
                   context: context,
-                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const HeroTestScreen())),
-                  testTile: 'Hero 테스트'
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const HeroScreen())),
+                  testTile: 'Hero'
                 ),
                 textPushBtn(
                   context: context,
                   onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const BoxFitScreen())),
-                  testTile: 'Boxfilt 테스트'
+                  testTile: 'Boxfilt'
                 ),
                 textPushBtn(
                   context: context,
-                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const Test01Screen())),
-                  testTile: '테스트01'
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PackageWidget01Screen())),
+                  testTile: '패키지 위젯'
                 ),
                 textPushBtn(
                   context: context,
-                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const Test02Screen())),
-                  testTile: '테스트02'
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const DefaultWidget01Screen())),
+                  testTile: '기본 위젯'
                 ),
                 textPushBtn(
                   context: context,
-                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const Text03Screen())),
-                  testTile: '테스트03'
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const DateRelatedScreen())),
+                  testTile: '날짜관련'
                 ),
                 textPushBtn(
                   context: context,
-                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const Test04Screen())),
-                  testTile: '테스트04'
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const TabBarScreen())),
+                  testTile: '탭바'
                 ),
                 textPushBtn(
                   context: context,
-                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const Test05Screen())),
-                  testTile: '테스트05'
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ScaffoldScreen())),
+                  testTile: 'Scaffold'
                 ),
                 textPushBtn(
                   context: context,
-                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const Test06Screen())),
-                  testTile: '테스트06'
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const RandomRelatedScreen())),
+                  testTile: '랜덤관련'
                 ),
                 textPushBtn(
                   context: context,
-                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const Test07Screen())),
-                  testTile: '테스트07'
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const CalendarWidgetScreen())),
+                  testTile: '달력위젯'
                 ),
               ],
             ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-class Test06Screen extends StatelessWidget {
-  const Test06Screen({super.key});
+class RandomRelatedScreen extends StatelessWidget {
+  const RandomRelatedScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

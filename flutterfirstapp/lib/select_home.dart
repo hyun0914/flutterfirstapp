@@ -1,5 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'oss_licenses/oss_licenses_page.dart';
 import 'shopping_app/screen/main_page.dart';
@@ -10,6 +11,9 @@ class SelectHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // StatusBar(상태바(상단,하단) 숨기기
+    // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+    // 참고사이트 https://ahang.tistory.com/3
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       locale: DevicePreview.locale(context),
@@ -53,8 +57,13 @@ class SelectHomeView extends StatelessWidget {
             children: [
               Center(
                 child: ElevatedButton(
-                    onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const MainPage())),
-                    child: const Text('쇼핑앱화면')
+                  // 일정시간 지연 시키는 법
+                  // 참고사이트
+                  // https://dkanxmstmdgml.tistory.com/153
+                  onPressed: () => Future.delayed(const Duration(milliseconds: 1500)).then((value) {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (_) => const MainPage()));
+                  }),
+                  child: const Text('쇼핑앱화면')
                 ),
               ),
               Center(

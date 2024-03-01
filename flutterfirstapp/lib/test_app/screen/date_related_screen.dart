@@ -3,8 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 
-class Text03Screen extends StatelessWidget {
-  const Text03Screen({super.key});
+class DateRelatedScreen extends StatelessWidget {
+  const DateRelatedScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
