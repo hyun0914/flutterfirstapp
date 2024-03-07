@@ -199,13 +199,14 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               ElevatedButton(
-                                  onPressed: (){
-                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProductReviewPage()));
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Colors.green,
-                                  ),
-                                  child: Text('리뷰 더 보기', style: TextStyle(fontSize: 20, color: Colors.white),)),
+                                onPressed: (){
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProductReviewPage()));
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.green,
+                                ),
+                                child: const Text('리뷰 더 보기', style: TextStyle(fontSize: 20, color: Colors.white),)
+                              ),
                             ],
                           ),
                         ],
@@ -241,17 +242,18 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               Expanded(
                 flex: 4,
                 child: ElevatedButton(
-                    onPressed: (){
-                      showModalBottomSheet(
-                          context: context,
-                          builder: (_){
-                            return purchaseWindow();
-                          });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.green,
-                    ),
-                    child: Text('구매 하기', style: TextStyle(fontSize: 20, color: Colors.white),)),
+                  onPressed: (){
+                    showModalBottomSheet(
+                        context: context,
+                        builder: (_){
+                          return purchaseWindow();
+                        });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                  ),
+                  child: const Text('구매 하기', style: TextStyle(fontSize: 20, color: Colors.white),)
+                ),
               ),
             ],
           ),
@@ -364,28 +366,28 @@ class _purchaseWindowState extends State<purchaseWindow> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: ElevatedButton(
-                      onPressed: (){
-                        Navigator.of(context).pop();
-                      },
-                      style: ElevatedButton.styleFrom(
-                          primary: Colors.white,
-                          side: BorderSide(
-                              color: Colors.green
-                          )
-                      ),
-                      child: Text('장바구니', style: TextStyle(fontSize: 20, color: Colors.green),)),
+                    onPressed: (){
+                      Navigator.of(context).pop();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      side: const BorderSide(color: Colors.green)
+                    ),
+                    child: const Text('장바구니', style: TextStyle(fontSize: 20, color: Colors.green),)
+                  ),
                 ),
               ),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.only(right: 8),
                   child: ElevatedButton(
-                      onPressed: (){
-                      },
-                      style: ElevatedButton.styleFrom(
-                          primary: Colors.green,
-                      ),
-                      child: Text('바로구매', style: TextStyle(fontSize: 20, color: Colors.white),)),
+                    onPressed: (){
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                    ),
+                    child: Text('바로구매', style: TextStyle(fontSize: 20, color: Colors.white),)
+                  ),
                 ),
               ),
             ],

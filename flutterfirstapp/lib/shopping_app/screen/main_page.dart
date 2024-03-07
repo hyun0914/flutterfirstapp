@@ -28,14 +28,12 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
 
   bool isShowFab = true;
 
-  Future<bool> onBackTwo() {
+  void onBackTwo() {
     DateTime now = DateTime.now();
     if(backPressTime == null || now.difference(backPressTime!) > const Duration(seconds: 2)){
       backPressTime = now;
       showToatst('뒤로가기 버튼을 한번 더 누르시면 종료 됩니다.');
-      return Future.value(false);
     }
-    return Future.value(true);
   }
 
   int currentIndex = 0;
@@ -140,9 +138,21 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         child: Center(
           child: Container(
             width: 720,
-            margin: EdgeInsets.only(bottom: kToolbarHeight),
-            child: WillPopScope(
-              onWillPop: Platform.isIOS? null : onBackTwo,
+            margin: const EdgeInsets.only(bottom: kToolbarHeight),
+            // 참고사이트 WillPopScope 가 Deprecated 된 설명
+            // https://velog.io/@jeongminji4490/Flutter-WillPopScope-Deprecated
+
+            // WillPopScope > PopScope 으로 변경
+
+            // 참고사이트
+            // https://seong9566.tistory.com/350
+            child: PopScope(
+              // canPop true 기본 뒤로가기 활성화
+              // canPop false 기본 뒤로가기 비 활성화
+              canPop: true,
+              onPopInvoked: (value) {
+                onBackTwo();
+              },
               child: screenList.elementAt(currentIndex),
             ),
           ),

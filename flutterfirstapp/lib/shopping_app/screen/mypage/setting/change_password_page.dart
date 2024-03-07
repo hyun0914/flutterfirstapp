@@ -9,7 +9,7 @@ class ChangePasswordPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SimpleBarLayout(
+    return const SimpleBarLayout(
       title: '비밀번호 변경',
       topIcon: null,
       children: [
@@ -91,7 +91,7 @@ class _PasswordInputState extends State<PasswordInput> {
             width: MediaQuery.of(context).size.width * 0.85,
             height: MediaQuery.of(context).size.height * 0.05,
             child: ElevatedButton(
-              style: ElevatedButton.styleFrom(primary: Colors.green),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
               onPressed: () {
                 if(_pwcontroller.text !=''){
                   if(_pwcontroller.text == _pwcontrollerCheked.text){

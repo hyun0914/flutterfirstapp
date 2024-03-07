@@ -60,19 +60,21 @@ class _MyReviewPageState extends State<MyReviewPage> {
           width: MediaQuery.of(context).size.width,
           height: 45,
           child: get_id ==''?
-          SizedBox():
+          const SizedBox():
           ElevatedButton(
-              onPressed: (){
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MyReviewListPage()),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.green,
-              ),
-              child: Text('리뷰 쓰기', style: TextStyle(fontSize: 20, color: Colors.white))),
+            onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyReviewListPage()),
+              );
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.green,
+            ),
+            child: const Text('리뷰 쓰기', style: TextStyle(fontSize: 20, color: Colors.white))
+          ),
         ),
-      ],);
+      ],
+    );
   }
 }

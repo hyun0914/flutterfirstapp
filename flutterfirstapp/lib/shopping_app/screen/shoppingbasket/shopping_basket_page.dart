@@ -131,14 +131,12 @@ class _ShoppingBasketPageState extends State<ShoppingBasketPage> {
                               child: Padding(
                                 padding: const EdgeInsets.only(right: 8, bottom: 35),
                                 child: ElevatedButton(
-                                    onPressed: (){
-                                      // Navigator.of(context).push(MaterialPageRoute(builder: (context) => BuyerInformation(
-                                      //   get_id: widget.get_id, get_plid: widget.get_plid, get_title: widget.get_title, get_price: widget.get_price, get_productnumber: productnumber,)));
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      primary: Colors.green,
-                                    ),
-                                    child: Text('바로구매', style: TextStyle(fontSize: 20, color: Colors.white),)),
+                                  onPressed: (){},
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.green,
+                                  ),
+                                  child: const Text('바로구매', style: TextStyle(fontSize: 20, color: Colors.white),)
+                                ),
                               ),
                             ),
                           ],

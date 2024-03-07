@@ -67,6 +67,12 @@ class SelectTest extends StatelessWidget {
                   onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const CalendarWidgetScreen())),
                   testTile: '달력위젯'
                 ),
+                textPushBtn(
+                  context: context,
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const CalendarWidgetScreen())),
+                  testTile: '앱 라이프 사이클'
+                ),
+
               ],
             ),
           )

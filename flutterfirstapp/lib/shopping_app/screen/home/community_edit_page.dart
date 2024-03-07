@@ -57,19 +57,20 @@ class _CommunityEditPageState extends State<CommunityEditPage> {
                       Container(
                         width: 350,
                         child: ElevatedButton(
-                            onPressed: (){
-                              if(_imageFile2.length == 0){
-                                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => MainPage()),  (route) => false);
-                                showToatst('글수정 완료');
-                              } else if(_imageFile2.length > 0){
-                                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => MainPage()),  (route) => false);
-                                showToatst('글수정 완료');
-                              }
-                            },
-                            style: ElevatedButton.styleFrom(
-                                primary: Colors.green
-                            ),
-                            child: Text('글 수정', style: TextStyle(fontSize: 20, color: Colors.white),)),
+                          onPressed: (){
+                            if(_imageFile2.length == 0){
+                              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => MainPage()),  (route) => false);
+                              showToatst('글수정 완료');
+                            } else if(_imageFile2.length > 0){
+                              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => MainPage()),  (route) => false);
+                              showToatst('글수정 완료');
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.green
+                          ),
+                          child: const Text('글 수정', style: TextStyle(fontSize: 20, color: Colors.white),)
+                        ),
                       ),
                     ],
                   ),

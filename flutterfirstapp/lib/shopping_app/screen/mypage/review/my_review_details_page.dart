@@ -152,29 +152,31 @@ class _MyReviewDetailsPageState extends State<MyReviewDetailsPage> {
           children: [
             Expanded(
               child: ElevatedButton(
-                  onPressed: (){
-                    Navigator.pop(
-                      context,
-                      MaterialPageRoute(builder: (context) => MyReviewPage()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.green,
-                  ),
-                  child: Text('수정 하기', style: TextStyle(fontSize: 20, color: Colors.white))),
+                onPressed: (){
+                  Navigator.pop(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyReviewPage()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                ),
+                child: const Text('수정 하기', style: TextStyle(fontSize: 20, color: Colors.white))
+              ),
             ),
             Expanded(
               child: ElevatedButton(
-                  onPressed: (){
-                    Navigator.pop(
-                      context,
-                      MaterialPageRoute(builder: (context) => MyReviewPage()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.green,
-                  ),
-                  child: Text('삭제 하기', style: TextStyle(fontSize: 20, color: Colors.white))),
+                onPressed: (){
+                  Navigator.pop(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyReviewPage()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                ),
+                child: const Text('삭제 하기', style: TextStyle(fontSize: 20, color: Colors.white))
+              ),
             ),
           ],
         )

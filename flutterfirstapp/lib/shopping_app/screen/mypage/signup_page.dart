@@ -166,10 +166,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             height: MediaQuery.of(context).size.height * 0.05,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                // shape: RoundedRectangleBorder(
-                                //   borderRadius: BorderRadius.circular(30.0),
-                                // ),
-                                  primary: Colors.green
+                                backgroundColor: Colors.green
                               ),
                               onPressed: (){
                                 if(_idcontroller.text == ''){
@@ -239,42 +236,37 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           SizedBox(height: 8,),
                           Container(
-                        width: MediaQuery.of(context).size.width * 0.85,
-                        height: MediaQuery.of(context).size.height * 0.05,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            // shape: RoundedRectangleBorder(
-                            //   borderRadius: BorderRadius.circular(30.0),
-                            // ),
-                              primary: Colors.green
-                          ),
-                          onPressed: (){
-                            if(checkName == ''){
-                              showToatst('사용가능한 닉네임 입니다.');
-                            } else {
-                              if(checkName == 'false'){
-                                showToatst('사용가능한 닉네임 입니다.');
-                              }else if(checkName == 'true'){
-                                showToatst('사용중인 닉네임 입니다.');
-                              }
-                            }
-                          },
-                          child: Text('닉네임 중복체크'),
+                            width: MediaQuery.of(context).size.width * 0.85,
+                            height: MediaQuery.of(context).size.height * 0.05,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                 backgroundColor: Colors.green
+                              ),
+                              onPressed: (){
+                                if(checkName == ''){
+                                  showToatst('사용가능한 닉네임 입니다.');
+                                } else {
+                                  if(checkName == 'false'){
+                                    showToatst('사용가능한 닉네임 입니다.');
+                                  }else if(checkName == 'true'){
+                                    showToatst('사용중인 닉네임 입니다.');
+                                  }
+                                }
+                              },
+                              child: Text('닉네임 중복체크'),
                             )
                           ),
                         ],
                       ),
                     ),
                   ),
-                  CheckboxView(),
-                  SizedBox(
-                    height: 25,
-                  ),
+                  const CheckboxView(),
+                  const SizedBox(height: 25,),
                   Container(
                     width: MediaQuery.of(context).size.width * 0.85,
                     height: MediaQuery.of(context).size.height * 0.05,
                     child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(primary: Colors.green),
+                      style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
                       onPressed: () {
                         if(_idcontroller.text !='' && _pwcontroller.text !='' && _namecontroller.text  !=''){
                          if(checkEmail == true){

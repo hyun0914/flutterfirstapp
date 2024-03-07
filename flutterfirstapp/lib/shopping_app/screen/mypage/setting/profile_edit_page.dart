@@ -64,7 +64,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * 0.05,
                   child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(primary: Colors.green),
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
                     onPressed: () {
                       if(checkName == 'false'){
                         showToatst('닉네임 변경완료.');

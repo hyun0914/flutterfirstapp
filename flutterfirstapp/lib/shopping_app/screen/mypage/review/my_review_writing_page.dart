@@ -108,27 +108,6 @@ class _MyReviewWritingPageState extends State<MyReviewWritingPage> {
                       ),
                     ),
                   ),
-                  // Container(
-                  //     child: _imageFile == null ?
-                  //     Text('리뷰이미지없습니다.'):
-                  //     Image(image: FileImage((File(_imageFile!.path))) as ImageProvider,)
-                  // ),
-                  // Row(
-                  //   children: [
-                  //     Expanded(
-                  //       child: ElevatedButton(
-                  //         onPressed: (){
-                  //           //showModalBottomSheet(context: context,  builder: (builder) => bottomsheet());
-                  //         },
-                  //         style: ElevatedButton.styleFrom(
-                  //           primary: Colors.green,
-                  //         ),
-                  //         child: Text('이미지 선택',style: TextStyle(fontSize: 20, color: Colors.white)),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
-                  //   imgFrom(),
                 ],
               ),
             ],
@@ -138,60 +117,20 @@ class _MyReviewWritingPageState extends State<MyReviewWritingPage> {
           children: [
             Expanded(
               child: ElevatedButton(
-                  onPressed: (){
-                    Navigator.pop(context);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.green,
-                  ),
-                  child: Text('작성 완료', style: TextStyle(fontSize: 20, color: Colors.white))),
+                onPressed: (){
+                  Navigator.pop(context);
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                ),
+                child: Text('작성 완료', style: TextStyle(fontSize: 20, color: Colors.white))
+              ),
             ),
           ],
         )
-      ],);
+      ],
+    );
   }
-
-  // Widget bottomsheet() {
-  //   return Container(
-  //     height: 100,
-  //     width: MediaQuery.of(context).size.width,
-  //     margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-  //     child: Column(
-  //       children: [
-  //         Text(
-  //           '이미지 선택',
-  //           style: TextStyle(fontSize: 20),
-  //         ),
-  //         SizedBox(
-  //           height: 20,
-  //         ),
-  //         Row(
-  //           mainAxisAlignment: MainAxisAlignment.spaceAround,
-  //           children: [
-  //             IconButton(
-  //               onPressed: () {
-  //                 takePhoto(ImageSource.camera);
-  //               },
-  //               icon: Icon(
-  //                 Icons.camera,
-  //                 size: 50,
-  //               ),
-  //             ),
-  //             IconButton(
-  //               onPressed: () {
-  //                 takePhoto(ImageSource.gallery);
-  //               },
-  //               icon: Icon(
-  //                 Icons.photo,
-  //                 size: 50,
-  //               ),
-  //             ),
-  //           ],
-  //         )
-  //       ],
-  //     ),
-  //   );
-  // }
 
   Widget imgFrom(){
     List<Widget> _boxContents = [

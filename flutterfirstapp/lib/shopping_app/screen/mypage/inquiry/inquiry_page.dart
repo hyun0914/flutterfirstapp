@@ -65,19 +65,21 @@ class _InquiriesPageState extends State<InquiriesPage> {
           width: MediaQuery.of(context).size.width,
           height: 45,
           child: get_id ==''?
-            SizedBox():
-            ElevatedButton(
-              onPressed: (){
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => InquiryWritePage()),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.green,
-              ),
-              child: Text('문의 하기', style: TextStyle(fontSize: 20, color: Colors.white),)),
+          const SizedBox():
+          ElevatedButton(
+            onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => InquiryWritePage()),
+              );
+            },
+            style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+            ),
+            child: Text('문의 하기', style: TextStyle(fontSize: 20, color: Colors.white),)
+          ),
         ),
-      ],);
+      ],
+    );
   }
 }

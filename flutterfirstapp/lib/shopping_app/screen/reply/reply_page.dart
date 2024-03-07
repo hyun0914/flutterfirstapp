@@ -33,7 +33,7 @@ class _ReplyPageState extends State<ReplyPage> {
                             children: [
                               ClipOval(child: Image.asset('assets/images/pizza.png', fit: BoxFit.fill, width: 20, height: 20,)),
                               const SizedBox(width: 10,),
-                              Column(
+                              const Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Row(
@@ -59,28 +59,6 @@ class _ReplyPageState extends State<ReplyPage> {
                                   ),
                                 ],
                               ),
-                              // Row(
-                              //   children: [
-                              //     IconButton(onPressed: (){
-                              //       showAdaptiveActionSheet(
-                              //         context: context,
-                              //         actions: <BottomSheetAction>[
-                              //           BottomSheetAction(
-                              //               title: Text('수정'),
-                              //               onPressed: (context){
-                              //
-                              //               }),
-                              //           BottomSheetAction(
-                              //               title: Text('삭제'),
-                              //               onPressed: (context){
-                              //                 replyViewModel.onEvent(ReplyEvent.reply_delete('${post.rep_writer_id}', '${post.rep_title}'));
-                              //               }),
-                              //         ],
-                              //         cancelAction: CancelAction(title: Text('취소')),
-                              //       );
-                              //     }, icon: Icon(Icons.more_vert))
-                              //   ],
-                              // )
                             ],
                           ),
                         ],
@@ -110,12 +88,13 @@ class _ReplyPageState extends State<ReplyPage> {
                   child: SizedBox(
                     height: 40,
                     child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.green,
-                        ),
-                        onPressed: (){
-                          //showToatst('댓글등록 완료');
-                        }, child: Text('등록', style: TextStyle(fontSize: 17, color: Colors.white),))
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green,
+                      ),
+                      onPressed: (){
+                        //showToatst('댓글등록 완료');
+                      }, child: const Text('등록', style: TextStyle(fontSize: 17, color: Colors.white),)
+                    )
                   ),
                 ),
               ],
